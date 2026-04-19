@@ -138,13 +138,13 @@ export default function Home() {
 
               {/* Social Links */}
               <motion.div variants={itemVariants} className="flex items-center justify-center lg:justify-start gap-4 sm:gap-6">
-                <div className="hidden md:block h-[1px] w-12 bg-gradient-to-r from-transparent to-[#00ffa240]" />
+                <div className="hidden md:block h-[1px] w-12 bg-gradient-to-r from-transparent to-[#00d4ff40]" />
                 <motion.a
                   href={personal.github}
                   target="_blank"
                   rel="noreferrer"
                   whileHover={{ y: -5, scale: 1.1 }}
-                  className="w-10 h-10 sm:w-11 sm:h-11 bg-white/[0.03] backdrop-blur-xl border border-white/5 rounded-xl flex items-center justify-center text-[#00ffa2] shadow-[0_0_20px_rgba(0,255,162,0.1)] hover:shadow-[0_0_25px_rgba(0,255,162,0.3)] transition-all duration-400 group"
+                  className="w-10 h-10 sm:w-11 sm:h-11 bg-white/[0.03] backdrop-blur-xl border border-white/5 rounded-xl flex items-center justify-center text-[#00d4ff] shadow-[0_0_20px_rgba(0,212,255,0.1)] hover:shadow-[0_0_25px_rgba(0,212,255,0.3)] transition-all duration-400 group"
                 >
                   <GitHub sx={{ fontSize: 20 }} className="sm:text-[22px]" />
                 </motion.a>
@@ -153,11 +153,11 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                   whileHover={{ y: -5, scale: 1.1 }}
-                  className="w-10 h-10 sm:w-11 sm:h-11 bg-white/[0.03] backdrop-blur-xl border border-white/5 rounded-xl flex items-center justify-center text-[#00ffa2] shadow-[0_0_20px_rgba(0,255,162,0.1)] hover:shadow-[0_0_25px_rgba(0,255,162,0.3)] transition-all duration-400"
+                  className="w-10 h-10 sm:w-11 sm:h-11 bg-white/[0.03] backdrop-blur-xl border border-white/5 rounded-xl flex items-center justify-center text-[#00d4ff] shadow-[0_0_20px_rgba(0,212,255,0.1)] hover:shadow-[0_0_25px_rgba(0,212,255,0.3)] transition-all duration-400"
                 >
                   <LinkedIn sx={{ fontSize: 20 }} className="sm:text-[22px]" />
                 </motion.a>
-                <div className="h-[1px] w-12 sm:w-32 bg-gradient-to-r from-[#00ffa240] to-transparent" />
+                <div className="h-[1px] w-12 sm:w-32 bg-gradient-to-r from-[#00d4ff40] to-transparent" />
               </motion.div>
 
             </motion.div>
@@ -190,7 +190,7 @@ export default function Home() {
                   {/* High-tech status indicator overlay */}
                   <div className="absolute bottom-4 right-4 lg:bottom-6 lg:right-6 px-3 py-1.5 lg:px-4 lg:py-2 bg-dark-500/80 backdrop-blur-xl rounded-xl border border-white/5 shadow-2xl">
                     <div className="flex items-center gap-2">
-                      <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 rounded-full bg-[#00ffa2] shadow-[0_0_10px_#00ffa2]" />
+                      <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 rounded-full bg-[#00d4ff] shadow-[0_0_10px_#00d4ff]" />
                       <span className="text-white/60 font-mono text-[8px] lg:text-[9px] tracking-widest uppercase">Verified Expert</span>
                     </div>
                   </div>

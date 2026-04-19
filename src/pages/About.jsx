@@ -13,6 +13,7 @@ import {
   TrackChanges,
   Handshake
 } from '@mui/icons-material'
+import profiles from '../assets/KhuswanthRao.jpeg'
 import PageWrapper from '../components/PageWrapper'
 import SectionHeader from '../components/SectionHeader'
 import { portfolioData } from '../data'
@@ -45,12 +46,9 @@ export default function About() {
               <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none mix-blend-overlay" />
 
               <img
-                src="/profile.jpg"
+                src={profiles}
                 alt="Khuswanth Rao Jadav"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                onError={(e) => {
-                  e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop'
-                }}
               />
             </div>
           </motion.div>
