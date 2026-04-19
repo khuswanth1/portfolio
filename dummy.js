@@ -1,0 +1,1 @@
+const isDevMode = !process.env.EMAIL_PASS || process.env.EMAIL_PASS === 'REPLACE_WITH_YOUR_GMAIL_APP_PASSWORD'
