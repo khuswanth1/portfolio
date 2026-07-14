@@ -23,11 +23,33 @@ const allCategories = ['All', ...new Set(certifications.map(c => c.category))]
 const getCertIcon = (category) => {
   switch (category) {
     case 'Cloud': return <CloudQueue fontSize="inherit" />
-    case 'AI/ML': return <SmartToy fontSize="inherit" />
+    case 'AI': return <SmartToy fontSize="inherit" />
     case 'Database': return <Storage fontSize="inherit" />
-    case 'Web': return <Language fontSize="inherit" />
-    case 'Programming': return <Coffee fontSize="inherit" />
-    default: return <Terminal fontSize="inherit" />
+    case 'Java': return <Coffee fontSize="inherit" />
+    case 'Development': return <Terminal fontSize="inherit" />
+    default: return <WorkspacePremium fontSize="inherit" />
+  }
+}
+
+const containerVariants = {
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: 0.06
+    }
+  }
+}
+
+const itemVariants = {
+  initial: { opacity: 0, scale: 0.9, y: 15 },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.215, 0.61, 0.355, 1]
+    }
   }
 }
 
@@ -45,54 +67,59 @@ export default function Certifications() {
         <SectionHeader
           tag="Credentials"
           title="Certifications"
-          subtitle="Continuous learning through industry-recognized certifications and online courses."
+          subtitle="Verifiable badges and credentials validating technical skill sets and domains of expertise."
         />
 
         {/* Filter tabs */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
+        <div className="flex flex-wrap justify-center gap-2.5 mb-10">
           {allCategories.map((cat) => (
             <motion.button
               key={cat}
               onClick={() => setActiveFilter(cat)}
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 font-heading text-[10px] sm:text-xs tracking-widest uppercase transition-all duration-300 rounded ${activeFilter === cat
-                ? 'bg-primary text-dark-500 font-bold shadow-[0_0_15px_rgba(0,212,255,0.3)]'
-                : 'bg-white/5 border border-white/10 text-white/40 hover:text-white hover:border-white/30 hover:bg-white/10'
-                }`}
+              className={`flex items-center gap-2 px-4 py-2 font-heading text-xs font-bold tracking-normal transition-all duration-300 rounded-lg border ${
+                activeFilter === cat
+                  ? 'bg-primary/10 text-white border-primary/30 shadow-[0_0_15px_rgba(0,212,255,0.15)] font-bold'
+                  : 'bg-white/[0.01] border-white/5 text-white/40 hover:text-white hover:border-white/10 hover:bg-white/[0.03]'
+              }`}
             >
-              <FilterList className="text-[10px] sm:text-xs" />
+              <FilterList className="text-[12px]" />
               {cat}
             </motion.button>
           ))}
         </div>
 
         {/* Certs grid */}
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-12 sm:mb-16">
+        <motion.div 
+          layout 
+          variants={containerVariants}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-16 md:mb-24"
+        >
           <AnimatePresence mode="popLayout">
-            {filtered.map((cert, i) => (
+            {filtered.map((cert) => (
               <motion.div
                 key={cert.id}
                 layout
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ delay: i * 0.07, duration: 0.4 }}
-                whileHover={{ y: -8, boxShadow: `0 20px 40px -20px ${cert.color}30` }}
+                variants={itemVariants}
+                exit={{ opacity: 0, scale: 0.9, y: 15 }}
+                whileHover={{ y: -8, borderColor: `${cert.color}40`, boxShadow: `0 20px 40px -20px ${cert.color}30` }}
                 onHoverStart={() => setHoveredId(cert.id)}
                 onHoverEnd={() => setHoveredId(null)}
-                className="glass-card p-5 sm:p-6 cursor-default relative overflow-hidden group transition-all duration-500"
-                style={{ borderColor: hoveredId === cert.id ? `${cert.color}40` : 'rgba(255,255,255,0.05)' }}
+                className="glass-card p-5 sm:p-6 cursor-default relative overflow-hidden group transition-all duration-500 rounded-2xl border border-white/5 bg-white/[0.005]"
               >
                 {/* Background glow on hover */}
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{ background: `radial-gradient(ellipse at 50% 0%, ${cert.color}15, transparent 70%)` }}
                 />
 
                 {/* Top accent line */}
                 <div
-                  className="absolute top-0 left-0 right-0 h-1 sm:h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                   style={{ background: `linear-gradient(90deg, transparent, ${cert.color}, transparent)` }}
                 />
 
@@ -111,7 +138,7 @@ export default function Certifications() {
                       {getCertIcon(cert.category)}
                     </div>
                     <span
-                      className="text-[9px] sm:text-xs font-mono tracking-widest uppercase px-2 py-0.5 sm:py-1 rounded group-hover:shadow-md transition-shadow duration-300"
+                      className="text-[9px] sm:text-xs font-mono tracking-normal px-2.5 py-1 rounded group-hover:shadow-md transition-shadow duration-300"
                       style={{
                         background: `${cert.color}10`,
                         border: `1px solid ${cert.color}20`,
@@ -123,14 +150,14 @@ export default function Certifications() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-heading font-bold text-base sm:text-lg text-white tracking-wide mb-1 sm:mb-2 leading-tight group-hover:text-white/90 transition-colors">
+                  <h3 className="font-heading font-black text-base sm:text-lg text-white tracking-normal mb-1.5 leading-tight group-hover:text-white/95 transition-colors">
                     {cert.title}
                   </h3>
 
                   {/* Issuer */}
                   <div
-                    className="font-body text-xs sm:text-sm font-medium mb-2 sm:mb-3"
-                    style={{ color: cert.color }}
+                    className="font-body text-xs sm:text-sm font-bold mb-2.5 transition-colors duration-300 group-hover:text-[var(--hover-color)]"
+                    style={{ color: cert.color, '--hover-color': cert.color }}
                   >
                     {cert.issuer}
                   </div>
@@ -153,27 +180,27 @@ export default function Certifications() {
 
         {/* Achievements Professional Summary */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass-card p-6 sm:p-8 md:p-10 mb-12 sm:mb-16 relative overflow-hidden group border-none"
+          className="glass-card p-6 sm:p-8 md:p-10 mb-16 md:mb-24 relative overflow-hidden group border border-white/5 bg-white/[0.005] rounded-2xl"
         >
-          {/* Subtle Decorative Background Elements */}
+          {/* Decorative Background Elements */}
           <div className="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-primary/5 rounded-full blur-3xl -mr-24 sm:-mr-32 -mt-24 sm:-mt-32 transition-colors duration-500 group-hover:bg-primary/10" />
           <div className="absolute bottom-0 left-0 w-40 sm:w-48 h-40 sm:h-48 bg-purple-500/5 rounded-full blur-3xl -ml-20 sm:-ml-24 -mb-20 sm:-mb-24 transition-colors duration-500 group-hover:bg-purple-500/10" />
           
           <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-10 relative z-10">
             <div className="flex-1 text-center lg:text-left">
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-3 sm:mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-4">
                 <WorkspacePremium className="text-primary text-xs sm:text-sm" />
-                <span className="font-mono text-[9px] sm:text-[10px] text-primary tracking-[0.15em] sm:tracking-[0.2em] uppercase font-bold">Credential Dashboard</span>
+                <span className="font-mono text-[9px] sm:text-[10px] text-primary tracking-normal font-bold">Credential Dashboard</span>
               </div>
               
-              <h3 className="font-heading font-bold text-2xl sm:text-3xl text-white mb-3 sm:mb-4 tracking-tight leading-tight">
+              <h3 className="font-heading font-black text-2xl sm:text-3xl text-white mb-4 tracking-tight leading-tight">
                 Academic & Professional <span className="text-primary">Excellence</span>
               </h3>
               
-              <p className="text-white/70 font-body text-xs sm:text-sm leading-relaxed max-w-xl mx-auto lg:mx-0">
+              <p className="text-white/75 font-body text-xs sm:text-sm leading-relaxed max-w-xl mx-auto lg:mx-0 font-light">
                 A strategic accumulation of technical expertise across cloud architecture, 
                 machine learning, and full-stack systems. My certifications from nationally 
                 recognized bodies like <span className="text-white font-semibold">NPTEL (IITs)</span> and 
@@ -181,7 +208,13 @@ export default function Certifications() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-3 sm:gap-4 w-full lg:w-auto">
+            <motion.div 
+              variants={containerVariants}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-4 w-full lg:w-auto"
+            >
               {[
                 { 
                   label: 'Total Credentials', 
@@ -207,116 +240,104 @@ export default function Certifications() {
                   color: '#ffd700',
                   subtitle: 'Core Competence'
                 }
-              ].map((s, idx) => (
+              ].map((s) => (
                 <motion.div
                   key={s.label}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  variants={itemVariants}
                   whileHover={{ y: -5, scale: 1.05 }}
-                  transition={{ 
-                    type: 'spring', 
-                    stiffness: 300, 
-                    damping: 20,
-                    delay: idx * 0.1 
-                  }}
-                  viewport={{ once: true }}
-                  className="group/stat p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl flex flex-col items-center justify-center text-center relative overflow-hidden transition-all duration-500 bg-white/[0.02] border border-white/5 hover:border-white/10"
+                  className="group/stat p-5 rounded-2xl flex flex-col items-center justify-center text-center relative overflow-hidden transition-all duration-500 bg-white/[0.01] border border-white/5 hover:border-white/10"
                 >
                   {/* Hover Background Glow */}
                   <div 
-                    className="absolute inset-0 opacity-0 group-hover/stat:opacity-100 transition-opacity duration-500"
+                    className="absolute inset-0 opacity-0 group-hover/stat:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{ background: `radial-gradient(circle at 50% 50%, ${s.color}15, transparent 70%)` }}
                   />
                   
-                  {/* Subtle Top Light Effect */}
+                  {/* Top Light Effect */}
                   <div 
-                    className="absolute top-0 left-0 right-0 h-px sm:h-0.5 opacity-0 group-hover/stat:opacity-100 transition-opacity duration-300"
+                    className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover/stat:opacity-100 transition-opacity duration-300 pointer-events-none"
                     style={{ background: `linear-gradient(90deg, transparent, ${s.color}, transparent)` }}
                   />
 
                   {/* Value Number with Glow */}
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1 + 0.2 }}
-                    className="relative z-10 font-heading font-black text-3xl sm:text-4xl mb-1 sm:mb-1.5 tracking-tighter transition-all duration-300 group-hover/stat:scale-110 group-hover/stat:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                  <div 
+                    className="relative z-10 font-heading font-black text-3xl sm:text-4xl mb-1.5 tracking-normal transition-all duration-300 group-hover/stat:scale-110 group-hover/stat:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
                     style={{ color: s.color }}
                   >
                     {s.value}
-                  </motion.div>
+                  </div>
 
-                  <div className="relative z-10 text-white/90 group-hover/stat:text-white font-bold font-mono text-[9px] sm:text-[11px] uppercase tracking-[0.1em] sm:tracking-[0.15em] mb-1 sm:mb-1.5 transition-colors duration-300">
+                  <div className="relative z-10 text-white/90 group-hover/stat:text-white font-bold font-mono text-[9px] sm:text-[11px] tracking-normal mb-1 transition-colors duration-300">
                     {s.label}
                   </div>
                   
-                  <div className="relative z-10 text-white/40 text-[8px] sm:text-[9px] font-body italic tracking-wide transition-colors duration-300 group-hover/stat:text-white/70">
+                  <div className="relative z-10 text-white/40 text-[8px] sm:text-[9px] font-body italic tracking-normal transition-colors duration-300 group-hover/stat:text-white/70">
                     {s.subtitle}
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </motion.div>
 
         {/* Platforms */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-8 sm:mb-12"
+          className="text-center mb-10"
         >
-          <div className="font-mono text-white text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.4em] uppercase mb-8 sm:mb-12 font-bold opacity-80">Certified by</div>
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8">
+          <div className="font-mono text-white text-xs tracking-normal mb-10 font-bold opacity-80">Certified by</div>
+          
+          <motion.div 
+            variants={containerVariants}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8"
+          >
             {[
               { name: 'NPTEL', color: '#00d4ff' },
               { name: 'Coursera', color: '#2b6efd' },
               { name: 'SoloLearn', color: '#00ffa3' },
               { name: 'Lets Grow More', color: '#ffb300' },
-              { name: 'Oasis Infobyte', color: '#9d50bb' },
-
-            ].map((p, i) => (
+              { name: 'Oasis Infobyte', color: '#9d50bb' }
+            ].map((p) => (
               <motion.div
                 key={p.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
+                variants={itemVariants}
                 whileHover={{ y: -5 }}
                 className="relative group cursor-default w-[calc(50%-0.5rem)] sm:w-auto"
               >
                 {/* Unique Asymmetrical Shape Wrapper */}
                 <div 
-                  className="px-4 sm:px-8 py-2.5 sm:py-3 transition-all duration-500 relative z-10 font-heading text-[10px] sm:text-xs font-black tracking-[0.1em] sm:tracking-widest uppercase flex items-center justify-center overflow-hidden h-full"
+                  className="px-6 sm:px-8 py-3 transition-all duration-500 relative z-10 font-heading text-xs font-black tracking-normal flex items-center justify-center overflow-hidden h-full rounded-xl"
                   style={{ 
                     clipPath: 'polygon(10% 0, 100% 0, 90% 100%, 0% 100%)',
-                    background: 'rgba(255,255,255,0.06)',
-                    border: '1px solid rgba(255,255,255,0.1)',
+                    background: 'rgba(255,255,255,0.02)',
+                    border: '1px solid rgba(255,255,255,0.05)',
                     color: '#ffffff'
                   }}
                 >
-                  <span className="relative z-20 group-hover:scale-110 group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.8)] transition-all duration-300 break-words text-center">
+                  <span className="relative z-20 group-hover:scale-110 transition-all duration-300 break-words text-center">
                     {p.name}
                   </span>
 
                   {/* Hover Background Glow Filling from Left */}
                   <div 
-                    className="absolute inset-0 z-10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out"
+                    className="absolute inset-0 z-10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out pointer-events-none"
                     style={{ background: `linear-gradient(90deg, ${p.color}40, ${p.color}10)` }}
                   />
-                  
-                  {/* Subtle Shimmer Effect */}
-                  <div className="absolute inset-0 z-15 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:animate-[shimmer_2s_infinite]" />
                 </div>
 
                 {/* Outer Neon Glow */}
                 <div 
-                  className="absolute inset-0 blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 z-0"
+                  className="absolute inset-0 blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 z-0 pointer-events-none"
                   style={{ background: p.color }}
                 />
-                
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
 
       </div>

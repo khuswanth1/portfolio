@@ -78,7 +78,7 @@
   }
 
   .section-title {
-    @apply font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-wider uppercase leading-tight;
+    @apply font-heading font-bold text-3xl sm:text-3xl md:text-4xl tracking-normal uppercase leading-tight;
   }
 
   .gradient-text {

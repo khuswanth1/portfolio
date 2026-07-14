@@ -58,7 +58,7 @@ export default function Navbar() {
         animate={{ scaleX: 1 }}
         className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/40 to-transparent"
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <div className="w-full px-4 sm:px-6 md:px-8 flex items-center justify-between">
         {/* Professional Shield Logo */}
         <Link to="/">
           <motion.div
@@ -90,12 +90,12 @@ export default function Navbar() {
             </motion.div>
 
             <div className="flex flex-col leading-tight hidden sm:block">
-              <span className="font-heading font-extrabold text-lg tracking-[0.2em] uppercase text-white group-hover:text-primary transition-colors duration-300">
-                KHUSWANTH
+              <span className="font-heading font-extrabold text-lg tracking-normal uppercase text-white group-hover:text-primary transition-colors duration-300">
+                Khuswanth Rao
               </span>
               <div className="flex items-center gap-1.5 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="h-px w-3 bg-primary" />
-                <span className="font-mono text-[9px] tracking-[0.3em] uppercase">SYSTEMS.DEV</span>
+                <span className="font-mono text-[9px] tracking-normal uppercase">SYSTEMS.DEV</span>
               </div>
             </div>
           </motion.div>
@@ -109,7 +109,7 @@ export default function Navbar() {
               <Link key={link.path} to={link.path}>
                 <motion.div
                   whileHover={{ y: -2 }}
-                  className={`relative px-3 xl:px-4 py-2 font-heading text-[11px] xl:text-sm tracking-widest uppercase transition-colors duration-300 ${isActive ? 'text-primary font-bold' : 'text-white/60 hover:text-white'
+                  className={`relative px-3 xl:px-4 py-2 font-heading text-[11px] xl:text-sm tracking-normal uppercase transition-colors duration-300 ${isActive ? 'text-primary font-bold' : 'text-white/60 hover:text-white'
                     }`}
                 >
                   {link.label}
@@ -128,7 +128,7 @@ export default function Navbar() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="ml-2 xl:ml-4 px-4 xl:px-5 py-2 border border-primary/50 text-primary font-heading text-[11px] xl:text-sm tracking-widest uppercase hover:bg-primary/10 transition-all duration-300 clip-corner relative overflow-hidden group"
+              className="ml-2 xl:ml-4 px-4 xl:px-5 py-2 border border-primary/50 text-primary font-heading text-[11px] xl:text-sm tracking-normal uppercase hover:bg-primary/10 transition-all duration-300 clip-corner relative overflow-hidden group"
               style={{ boxShadow: '0 0 15px rgba(0,212,255,0.1)' }}
             >
               <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
@@ -173,7 +173,7 @@ export default function Navbar() {
                     <Link
                       to={link.path}
                       onClick={() => setMenuOpen(false)}
-                      className={`block px-6 py-4 font-heading tracking-widest uppercase text-sm md:text-base border-l-2 transition-all duration-300 relative overflow-hidden group ${isActive
+                      className={`block px-6 py-4 font-heading tracking-normal uppercase text-sm md:text-base border-l-2 transition-all duration-300 relative overflow-hidden group ${isActive
                           ? 'border-primary text-primary bg-primary/10'
                           : 'border-transparent text-white/50 hover:border-primary/50 hover:text-white hover:bg-white/5'
                         }`}
@@ -182,7 +182,7 @@ export default function Navbar() {
                          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-50" />
                       )}
                       <div className="flex items-center justify-between">
-                        <span className="relative z-10 font-medium tracking-[0.2em]">{link.label}</span>
+                        <span className="relative z-10 font-medium tracking-normal">{link.label}</span>
                         {isActive && (
                           <motion.div 
                             layoutId="mobile-indicator"
@@ -207,7 +207,7 @@ export default function Navbar() {
                     {/* Deep dynamic glow underneath */}
                     <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-500 rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-500 animate-pulse" />
                     
-                    <button className="relative w-full py-4 bg-dark-500 border-2 border-primary/80 group-hover:bg-primary group-hover:border-primary text-primary group-hover:text-dark-500 font-heading text-sm tracking-[0.3em] font-extrabold uppercase transition-all duration-500 clip-corner overflow-hidden">
+                    <button className="relative w-full py-4 bg-dark-500 border-2 border-primary/80 group-hover:bg-primary group-hover:border-primary text-primary group-hover:text-dark-500 font-heading text-sm tracking-normal font-extrabold uppercase transition-all duration-500 clip-corner overflow-hidden">
                       {/* Diagonal sweep light effect */}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out skew-x-12" />
                       

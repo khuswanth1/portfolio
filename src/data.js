@@ -8,7 +8,7 @@ export const portfolioData = {
     location: "Lakshmi Puram, Tirupati - 517501",
     linkedin: "https://www.linkedin.com/in/khuswanth-rao-jadav-991686250/",
     github: "https://github.com/khuswanth1",
-    objective: "Seeking an entry-level position in the IT sector where I can contribute to innovative projects, enhance my technical expertise, and collaborate with a diverse team of professionals."
+    objective: "Results-driven Software Engineer with hands-on experience in full-stack Java development, Spring Boot microservices, and React.js. Skilled in designing scalable REST APIs, optimizing relational database structures, and building high-performance, responsive user interfaces."
   },
 
   education: [
@@ -20,7 +20,7 @@ export const portfolioData = {
       location: "Tirupati",
       period: "2020 – 2024",
       cgpa: "8.31",
-      icon: "🎓"
+      icon: "School"
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ export const portfolioData = {
       location: "Tirupati",
       period: "2018 – 2020",
       cgpa: "6.21",
-      icon: "📚"
+      icon: "AutoStories"
     },
     {
       id: 3,
@@ -40,7 +40,7 @@ export const portfolioData = {
       location: "Tirupati",
       period: "2018",
       cgpa: "8.5",
-      icon: "🏫"
+      icon: "AccountBalance"
     }
   ],
 
@@ -192,6 +192,39 @@ export const portfolioData = {
       gradient: "from-purple-500 to-pink-600",
       github: "https://github.com/khuswanth1/triviaWithSeven",
       category: "Java Application"
+    },
+    {
+      id: 3,
+      title: "pharmacy App",
+      subtitle: "Java, Spring Boot Microservices, React.js",
+      description: "A full-stack pharmacy e-commerce application using React.js and Spring Boot Microservices with independent Auth, Product, Cart, Order, and Payment services.",
+      techStack: ["React.js", "Java", "Spring Boot", "Microservices", "Spring Security", "JWT", "OAuth2", "Spring Data JPA", "Hibernate", "MySQL"],
+      features: [
+        "Developed full-stack microservices architecture with independent Auth, Product, Cart, Order, and Payment services",
+        "Designed RESTful APIs using Spring Boot, Spring Data JPA, Hibernate, and secure authentication with JWT/OAuth2",
+        "Built end-to-end shopping workflows including product search, cart management, checkout, and payment processing",
+        "Created reusable React.js components with Context API-based state management integrated with backend APIs",
+        "Followed enterprise application design practices including API Gateway architecture and layered backend structure"
+      ],
+      gradient: "from-emerald-500 to-teal-600",
+      github: "https://github.com/khuswanth1/Pharma-app",
+      category: "Microservices Web App"
+    },
+    {
+      id: 4,
+      title: "Ultimate Todo List",
+      subtitle: "React.js, Spring Boot, Spring Data JPA",
+      description: "A full-stack productivity application built using React.js and Spring Boot that allows users to organize and manage daily tasks through a modern responsive interface.",
+      techStack: ["React.js", "Java", "Spring Boot", "REST API", "Spring Data JPA", "Hibernate", "Material UI", "Tailwind CSS", "Docker", "Maven", "Git"],
+      features: [
+        "Developed RESTful backend services with Spring Boot and persistent data storage using Spring Data JPA/Hibernate",
+        "Created reusable React components with clean design styling using Material UI and Tailwind CSS",
+        "Followed enterprise-level architecture separating frontend, backend API, business logic, and database layers",
+        "Added Docker and Docker Compose support for simplified local application setup and deployment"
+      ],
+      gradient: "from-amber-500 to-orange-600",
+      github: "https://github.com/khuswanth1/Todo",
+      category: "Full Stack Web App"
     }
   ],
 
@@ -247,9 +280,9 @@ export const portfolioData = {
   ],
 
   stats: [
-    { label: "Total Projects", value: "10+", icon: "🚀" },
-    { label: "Companies", value: "4", icon: "💼" },
-    { label: "Certifications", value: "6", icon: "🏆" },
-    { label: "CGPA", value: "8.31", icon: "⭐" }
+    { label: "Total Projects", value: "10+", icon: "RocketLaunch" },
+    { label: "Companies", value: "4", icon: "BusinessCenter" },
+    { label: "Certifications", value: "6", icon: "EmojiEvents" },
+    { label: "CGPA", value: "8.31", icon: "Stars" }
   ]
 }

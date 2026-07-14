@@ -1,178 +1,348 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { GitHub, OpenInNew, Code, Check, Settings, AccountBalance, SportsEsports, FactCheck, Architecture, Person } from '@mui/icons-material'
+import { GitHub, OpenInNew, Code, Check, Settings, AccountBalance, SportsEsports, FactCheck, Architecture, Person, LocalPharmacy, TaskAlt } from '@mui/icons-material'
 import PageWrapper from '../components/PageWrapper'
 import SectionHeader from '../components/SectionHeader'
 import { portfolioData } from '../data'
 
 const { projects } = portfolioData
 
-function ProjectCard({ project, index }) {
-  const [expanded, setExpanded] = useState(false)
+function ProjectCard({ project, index, onViewDetails }) {
+  // Map project ID to a solid/accent color for custom glow styling
+  const getAccentColor = (id) => {
+    switch (id) {
+      case 1: return '#00d4ff' // Cyan
+      case 2: return '#ff00f7' // Pink
+      case 3: return '#10b981' // Emerald
+      case 4: return '#f59e0b' // Amber
+      default: return '#6366f1' // Indigo
+    }
+  }
+
+  const accentColor = getAccentColor(project.id)
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.2, duration: 0.6 }}
-      className="glass-card overflow-hidden group relative transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-20px_rgba(0,212,255,0.3)] border border-white/5"
+      layout
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className="glass-card overflow-hidden group relative transition-all duration-500 hover:-translate-y-2.5 border border-white/5 hover:border-white/10 rounded-2xl flex flex-col h-full bg-white/[0.01]"
+      style={{
+        boxShadow: `0 8px 32px 0 rgba(0, 0, 0, 0.37)`,
+      }}
     >
-      {/* Dynamic Background Glow on Hover */}
+      {/* Dynamic Radial Background Glow on Hover */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-[0.05] transition-opacity duration-700 pointer-events-none`}
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+        style={{
+          background: `radial-gradient(circle at 50% 10%, ${accentColor}15 0%, transparent 60%)`
+        }}
       />
 
-      {/* Top Accent Line */}
+      {/* Top Accent Neon Line */}
       <div
-        className={`absolute top-0 left-0 right-0 h-1.5 sm:h-1 bg-gradient-to-r ${project.gradient} opacity-60 group-hover:opacity-100 transition-opacity duration-500`}
+        className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient} opacity-50 group-hover:opacity-100 transition-opacity duration-500`}
       />
 
-      <div className="p-5 sm:p-7 md:p-8 relative z-10 flex flex-col h-full">
+      <div className="p-6 sm:p-8 relative z-10 flex flex-col h-full">
         {/* Header */}
-        <div className="flex items-start justify-between mb-4 sm:mb-5 gap-3 sm:gap-4">
-          <div>
-            <div className="text-[28px] sm:text-[32px] md:text-[36px] mb-3 sm:mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3 origin-left drop-shadow-md">
-              {project.id === 1 ? <AccountBalance fontSize="inherit" style={{ color: '#00d4ff' }} /> :
-                project.id === 2 ? <SportsEsports fontSize="inherit" style={{ color: '#ff00f7' }} /> :
-                  <Code fontSize="inherit" className="text-primary" />}
+        <div className="flex items-start justify-between mb-5 gap-4">
+          <div className="flex-grow">
+            <div className="flex items-center gap-3 mb-4">
+              {/* Icon Container with Glow */}
+              <div 
+                className="relative w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden border border-white/10 shadow-inner group-hover:border-white/20 transition-colors"
+                style={{
+                  boxShadow: `0 0 15px ${accentColor}1a`
+                }}
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-15`} />
+                <div className="text-2xl drop-shadow-md z-10 flex items-center justify-center">
+                  {project.id === 1 ? <AccountBalance fontSize="inherit" style={{ color: '#00d4ff' }} /> :
+                    project.id === 2 ? <SportsEsports fontSize="inherit" style={{ color: '#ff00f7' }} /> :
+                    project.id === 3 ? <LocalPharmacy fontSize="inherit" style={{ color: '#10b981' }} /> :
+                    project.id === 4 ? <TaskAlt fontSize="inherit" style={{ color: '#f59e0b' }} /> :
+                      <Code fontSize="inherit" className="text-primary" />}
+                </div>
+              </div>
+
+              {/* Category Tag */}
+              <span 
+                className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wider px-2.5 py-1 rounded-full border bg-white/5 border-white/10"
+                style={{ color: accentColor }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: accentColor }} />
+                {project.category}
+              </span>
             </div>
-            <span className="inline-block font-mono text-[8px] sm:text-[9px] text-white/50 tracking-[0.15em] sm:tracking-[0.2em] uppercase border border-white/10 bg-white/5 px-2 sm:px-2.5 py-1 rounded-sm shadow-sm">
-              {project.category}
-            </span>
-            <h3 className="font-heading font-black text-lg sm:text-xl lg:text-2xl text-white mt-3 sm:mt-4 tracking-widest sm:tracking-wider uppercase leading-tight group-hover:text-white/90 transition-colors drop-shadow-sm">{project.title}</h3>
-            <div className="text-primary font-mono text-[9px] sm:text-[10px] tracking-[0.1em] sm:tracking-widest uppercase mt-1.5 sm:mt-2 opacity-80">{project.subtitle}</div>
+
+            <h3 className="font-heading font-black text-xl sm:text-2xl text-white tracking-wide leading-tight group-hover:text-white/95 transition-colors">
+              {project.title}
+            </h3>
+            <div className="text-white/50 font-mono text-[10px] tracking-wider mt-1">
+              {project.subtitle}
+            </div>
           </div>
+
+          {/* GitHub Icon Link */}
           <motion.a
             href={project.github}
             target="_blank"
             rel="noreferrer"
-            whileHover={{ scale: 1.1, rotate: 5, boxShadow: '0 0 15px rgba(0,212,255,0.2)' }}
-            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300 flex-shrink-0 backdrop-blur-md"
+            whileHover={{ scale: 1.1, rotate: 5, backgroundColor: 'rgba(255,255,255,0.08)' }}
+            className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-white/40 hover:text-white transition-all duration-300 flex-shrink-0 backdrop-blur-md"
+            style={{
+              boxShadow: `0 4px 12px rgba(0, 0, 0, 0.1)`
+            }}
           >
-            <GitHub fontSize="small" className="scale-75 sm:scale-100" />
+            <GitHub fontSize="small" />
           </motion.a>
         </div>
 
         {/* Description */}
-        <p className="text-white/60 font-body text-xs sm:text-[13px] leading-relaxed mb-5 sm:mb-6 pt-4 sm:pt-5 border-t border-white/5">
+        <p className="text-white/60 font-body text-xs sm:text-[13px] leading-relaxed mb-6 pt-5 border-t border-white/5">
           {project.description}
         </p>
 
         {/* Tech Stack */}
-        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8 mt-auto">
+        <div className="flex flex-wrap gap-2 mb-6 mt-auto">
           {project.techStack.map((tech) => (
             <span
               key={tech}
-              className="px-2 sm:px-2.5 py-1 text-[8px] sm:text-[10px] font-mono font-bold tracking-widest uppercase rounded-sm border border-white/5 text-white/70 bg-white/5 group-hover:border-primary/20 group-hover:bg-primary/5 transition-colors duration-300"
+              className="px-2.5 py-1 text-[10px] font-mono font-medium rounded-md border border-white/5 text-white/60 bg-white/[0.02] group-hover:border-white/10 hover:text-white transition-colors duration-300"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        {/* Features toggle */}
+        {/* Features toggle / Open Modal */}
         <button
-          onClick={() => setExpanded(!expanded)}
-          className="w-full py-2.5 sm:py-3 flex items-center justify-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] font-mono font-bold text-primary/60 hover:text-primary transition-all duration-300 tracking-[0.15em] sm:tracking-[0.2em] uppercase bg-black/20 hover:bg-primary/5 rounded-md border border-white/5 hover:border-primary/30"
+          onClick={onViewDetails}
+          className="w-full py-3 flex items-center justify-center gap-2 text-[10px] font-mono font-bold text-white/50 hover:text-white transition-all duration-300 tracking-wider bg-white/[0.02] hover:bg-white/[0.05] rounded-xl border border-white/5 hover:border-white/10 mt-2"
         >
-          <Code className={`${expanded ? "text-primary" : "text-white/40"} scale-75 sm:scale-100`} fontSize="small" />
-          {expanded ? 'Hide Details' : 'View Details'}
-          <motion.span
-            animate={{ rotate: expanded ? 180 : 0 }}
-            className="text-[8px] sm:text-[10px] ml-1"
-          >▼</motion.span>
+          <Code className="text-white/30" fontSize="small" />
+          View Details
+          <OpenInNew fontSize="small" className="scale-75 opacity-60 ml-0.5" />
         </button>
-
-        <AnimatePresence>
-          {expanded && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden mt-3"
-            >
-              <div className="p-4 sm:p-5 bg-black/30 rounded-md border border-primary/10">
-                <div className="space-y-2.5 sm:space-y-3">
-                  {project.features.map((feature, i) => (
-                    <motion.div
-                      key={feature}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.07 }}
-                      className="flex items-start gap-2.5 sm:gap-3 text-xs sm:text-[13px] text-primary/80 font-body leading-relaxed"
-                    >
-                      <Check className="text-primary flex-shrink-0 mt-[1px] sm:mt-0.5 scale-90 sm:scale-100" fontSize="small" />
-                      {feature}
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </motion.div>
   )
 }
 
 export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState(null)
+
+  // Helper to retrieve project specific theme color for modal elements
+  const getModalAccentColor = (id) => {
+    switch (id) {
+      case 1: return '#00d4ff'
+      case 2: return '#ff00f7'
+      case 3: return '#10b981'
+      case 4: return '#f59e0b'
+      default: return '#6366f1'
+    }
+  }
+
   return (
     <PageWrapper>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16">
         <SectionHeader
           tag="What I've Built"
           title="My Projects"
-          subtitle="Real-world Java applications showcasing backend logic, OOP principles, and user-centric design."
+          subtitle="Real-world web applications and backend architectures showcasing end-to-end design, database persistence, and system logic."
         />
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} />
-          ))}
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-12 sm:mb-16"
+        >
+          <AnimatePresence mode="popLayout">
+            {projects.map((project, i) => (
+              <ProjectCard 
+                key={project.id} 
+                project={project} 
+                index={i} 
+                onViewDetails={() => setSelectedProject(project)}
+              />
+            ))}
 
-          {/* More Coming Soon Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="glass-card p-6 sm:p-8 flex flex-col items-center justify-center text-center min-h-[200px] sm:min-h-[250px] border-dashed border-primary/20 cursor-default hover:bg-white/[0.01] transition-colors duration-500"
-          >
+            {/* More Coming Soon Card */}
             <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-              className="text-[40px] sm:text-[50px] mb-3 sm:mb-4 text-primary/50"
+              layout
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="glass-card p-8 flex flex-col items-center justify-center text-center min-h-[320px] border-dashed border-white/10 hover:border-primary/20 rounded-2xl cursor-default hover:bg-white/[0.01] transition-all duration-500"
             >
-              <Settings fontSize="inherit" />
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
+                className="text-5xl mb-5 text-white/30"
+              >
+                <Settings fontSize="inherit" />
+              </motion.div>
+              <h3 className="font-heading font-black text-lg text-white/50 tracking-wider mb-2 uppercase">More Coming Soon</h3>
+              <p className="text-white/30 text-xs sm:text-[13px] font-body max-w-xs leading-relaxed">
+                Currently architecting new enterprise applications with Spring Boot & React.js.
+              </p>
+              <div className="mt-5 flex gap-2">
+                <div className="w-2 h-2 bg-primary/30 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                <div className="w-2 h-2 bg-primary/30 rounded-full animate-bounce" style={{ animationDelay: '200ms' }} />
+                <div className="w-2 h-2 bg-primary/30 rounded-full animate-bounce" style={{ animationDelay: '400ms' }} />
+              </div>
             </motion.div>
-            <h3 className="font-heading font-bold text-base sm:text-lg text-white/40 tracking-[0.15em] sm:tracking-widest uppercase mb-2">More Coming Soon</h3>
-            <p className="text-white/20 text-xs sm:text-[13px] font-body px-4">
-              Currently building new projects with Spring Boot & React.
-            </p>
-            <div className="mt-4 flex gap-1.5 sm:gap-2">
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary/30 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary/30 rounded-full animate-bounce" style={{ animationDelay: '200ms' }} />
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary/30 rounded-full animate-bounce" style={{ animationDelay: '400ms' }} />
-            </div>
-          </motion.div>
-        </div>
+          </AnimatePresence>
+        </motion.div>
 
-        {/* Project Highlights */}
+        {/* Modal Popup Overlay */}
+        <AnimatePresence>
+          {selectedProject && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+              {/* Click outside to close */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0"
+                onClick={() => setSelectedProject(null)}
+              />
+
+              {/* Modal Card Content */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 15 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                className="relative w-full max-w-lg max-h-[85vh] overflow-y-auto glass-card rounded-2xl border border-white/10 p-5 sm:p-6 md:p-8 z-10 bg-[#08090d]/98 shadow-[0_0_50px_rgba(0,212,255,0.12)] flex flex-col"
+              >
+                {/* Top Accent Gradient Border */}
+                <div
+                  className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${selectedProject.gradient}`}
+                />
+
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-5 right-5 w-8 h-8 rounded-full border border-white/10 hover:border-white/20 flex items-center justify-center text-white/50 hover:text-white bg-white/5 hover:bg-white/15 transition-all z-20"
+                >
+                  ✕
+                </button>
+
+                {/* Header */}
+                <div className="flex items-center gap-4 mb-6 mt-2">
+                  <div 
+                    className="relative w-14 h-14 rounded-xl flex items-center justify-center overflow-hidden border border-white/10 shadow-lg"
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${selectedProject.gradient} opacity-20`} />
+                    <div className="text-3xl z-10 flex items-center justify-center">
+                      {selectedProject.id === 1 ? <AccountBalance fontSize="inherit" style={{ color: '#00d4ff' }} /> :
+                        selectedProject.id === 2 ? <SportsEsports fontSize="inherit" style={{ color: '#ff00f7' }} /> :
+                        selectedProject.id === 3 ? <LocalPharmacy fontSize="inherit" style={{ color: '#10b981' }} /> :
+                        selectedProject.id === 4 ? <TaskAlt fontSize="inherit" style={{ color: '#f59e0b' }} /> :
+                          <Code fontSize="inherit" className="text-primary" />}
+                    </div>
+                  </div>
+                  <div>
+                    <span 
+                      className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wider px-2.5 py-1 rounded-full border bg-white/5 border-white/10"
+                      style={{ color: getModalAccentColor(selectedProject.id) }}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: getModalAccentColor(selectedProject.id) }} />
+                      {selectedProject.category}
+                    </span>
+                    <h3 className="font-heading font-black text-2xl sm:text-3xl text-white mt-1.5">
+                      {selectedProject.title}
+                    </h3>
+                    <p className="text-white/50 font-mono text-xs tracking-wider mt-0.5">
+                      {selectedProject.subtitle}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Scrollable Details Body */}
+                <div className="space-y-6 overflow-y-auto pr-1">
+                  <div>
+                    <h4 className="font-heading font-bold text-xs uppercase tracking-widest text-white/40 mb-2">About the Project</h4>
+                    <p className="text-white/70 font-body text-[13px] leading-relaxed bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+                      {selectedProject.description}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-heading font-bold text-xs uppercase tracking-widest text-white/40 mb-3">Key Features & Implementations</h4>
+                    <div className="space-y-2.5">
+                      {selectedProject.features.map((feature, i) => (
+                        <div
+                          key={feature}
+                          className="flex items-start gap-3.5 text-xs sm:text-[13px] text-white/80 font-body leading-relaxed bg-white/[0.01] border border-white/[0.03] p-3 rounded-xl"
+                        >
+                          <Check 
+                            className="flex-shrink-0 mt-[2px]" 
+                            fontSize="small" 
+                            style={{ color: getModalAccentColor(selectedProject.id) }} 
+                          />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-heading font-bold text-xs uppercase tracking-widest text-white/40 mb-3">Technologies Used</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.techStack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1.5 text-xs font-mono font-medium rounded-lg border border-white/5 text-white/70 bg-white/[0.03]"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Footer Actions */}
+                <div className="mt-8 pt-5 border-t border-white/5 flex justify-end gap-3">
+                  <button
+                    onClick={() => setSelectedProject(null)}
+                    className="px-5 py-2.5 rounded-xl border border-white/10 hover:border-white/20 text-xs font-mono font-bold text-white/50 hover:text-white transition-all bg-white/5 hover:bg-white/10"
+                  >
+                    Close
+                  </button>
+                  <a
+                    href={selectedProject.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-5 py-2.5 rounded-xl text-xs font-mono font-bold text-black hover:text-black bg-white hover:bg-white/90 transition-all flex items-center gap-2"
+                  >
+                    <GitHub fontSize="small" />
+                    <span>View Source</span>
+                    <OpenInNew fontSize="small" className="scale-75" />
+                  </a>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+
+        {/* Project Highlights / Development Philosophy */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass-card p-6 sm:p-8 md:p-10 mb-8 sm:mb-12 relative overflow-hidden"
+          className="glass-card p-6 sm:p-8 md:p-10 mb-8 sm:mb-12 relative overflow-hidden rounded-2xl border border-white/5"
         >
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
           
-          <h3 className="font-heading font-black text-lg sm:text-xl md:text-2xl text-white mb-8 sm:mb-10 tracking-[0.2em] uppercase text-center sm:text-left">
+          <h3 className="font-heading font-black text-xl sm:text-2xl text-white mb-8 sm:mb-10 tracking-[0.2em] text-center uppercase">
             Development Philosophy
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
             {[
               {
                 icon: <Person fontSize="inherit" />,
@@ -196,11 +366,11 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="text-center group bg-white/[0.01] hover:bg-white/[0.03] p-6 rounded-2xl border border-white/5 hover:border-primary/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(0,212,255,0.05)]"
+                className="text-center group bg-white/[0.005] hover:bg-white/[0.015] p-6 rounded-2xl border border-white/5 hover:border-white/10 transition-all duration-300 hover:-translate-y-1.5"
               >
-                <div className="text-[40px] sm:text-[50px] mb-4 sm:mb-5 text-primary opacity-80 group-hover:scale-110 group-hover:text-white group-hover:drop-shadow-[0_0_15px_rgba(0,212,255,0.5)] transition-all duration-500">{item.icon}</div>
-                <h4 className="font-heading font-black text-white text-base sm:text-lg mb-2 sm:mb-3 tracking-[0.15em] sm:tracking-widest uppercase">{item.title}</h4>
-                <p className="text-white/50 text-xs sm:text-[13px] md:text-sm font-body leading-relaxed group-hover:text-white/70 transition-colors">{item.desc}</p>
+                <div className="text-4xl mb-4 text-white/50 group-hover:scale-110 group-hover:text-primary transition-all duration-500">{item.icon}</div>
+                <h4 className="font-heading font-black text-white text-base mb-2 tracking-wider uppercase">{item.title}</h4>
+                <p className="text-white/40 text-xs sm:text-[13px] font-body leading-relaxed group-hover:text-white/60 transition-colors">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -213,18 +383,18 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-white/30 font-body text-xs sm:text-sm mb-3 sm:mb-4 tracking-wider uppercase font-bold">Find all my work on GitHub</p>
+          <p className="text-white/30 font-body text-xs sm:text-sm mb-4 tracking-wider font-bold uppercase">Find all my work on GitHub</p>
           <motion.a
             href="https://github.com/khuswanth1"
             target="_blank"
             rel="noreferrer"
             whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0,212,255,0.2)' }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-3.5 border border-primary/40 text-primary font-heading font-black tracking-[0.1em] sm:tracking-[0.2em] text-[10px] sm:text-sm uppercase clip-corner hover:bg-primary/10 hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(0,212,255,0.1)] w-full sm:w-auto max-w-[300px] mx-auto"
+            className="inline-flex items-center justify-center gap-2 sm:gap-3 px-8 py-4 border border-primary/40 text-primary font-heading font-black tracking-[0.2em] text-xs sm:text-sm rounded-xl hover:bg-primary/10 hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(0,212,255,0.1)] w-full sm:w-auto max-w-[320px] mx-auto"
           >
-            <GitHub fontSize="small" className="scale-75 sm:scale-100" />
-            <span className="truncate">View All Repositories</span>
-            <OpenInNew fontSize="small" className="scale-75 sm:scale-100" />
+            <GitHub fontSize="small" />
+            <span>View All Repositories</span>
+            <OpenInNew fontSize="small" />
           </motion.a>
         </motion.div>
       </div>

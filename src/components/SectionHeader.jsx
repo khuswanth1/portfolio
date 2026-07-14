@@ -10,7 +10,7 @@ export default function SectionHeader({ tag, title, subtitle, align = 'center' }
       className={`mb-10 md:mb-16 w-full flex flex-col ${align === 'center' ? 'text-center items-center' : 'text-left items-start'}`}
     >
       {tag && (
-        <span className="inline-block font-mono text-[10px] sm:text-xs text-primary/70 tracking-[0.3em] uppercase mb-3 sm:mb-4 border border-primary/20 bg-primary/5 px-3 py-1 rounded-sm">
+        <span className="inline-block font-mono text-[10px] sm:text-xs text-primary/70 tracking-normal mb-3 sm:mb-4 border border-primary/20 bg-primary/5 px-3 py-1 rounded-sm">
           {tag}
         </span>
       )}
