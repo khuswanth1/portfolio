@@ -90,13 +90,9 @@ export default function Navbar() {
             </motion.div>
 
             <div className="flex flex-col leading-tight hidden sm:block">
-              <span className="font-heading font-extrabold text-lg tracking-normal uppercase text-white group-hover:text-primary transition-colors duration-300">
+              <span className="font-heading font-extrabold text-lg tracking-normal text-white group-hover:text-primary transition-colors duration-300">
                 Khuswanth Rao
               </span>
-              <div className="flex items-center gap-1.5 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="h-px w-3 bg-primary" />
-                <span className="font-mono text-[9px] tracking-normal uppercase">SYSTEMS.DEV</span>
-              </div>
             </div>
           </motion.div>
         </Link>
