@@ -1,0 +1,5 @@
+com\khuswanth\portfolio\controller\ContactController.class
+com\khuswanth\portfolio\service\MailService.class
+com\khuswanth\portfolio\PortfolioApplication.class
+com\khuswanth\portfolio\repository\ContactRepository.class
+com\khuswanth\portfolio\model\Contact.class
