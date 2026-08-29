@@ -121,12 +121,6 @@ export default function Skills() {
                         {cat.subtitle}
                       </span>
                     </div>
-                    <span 
-                      className="font-mono font-bold px-3 py-1 rounded-full border text-xs shrink-0 hidden sm:inline-block shadow-sm"
-                      style={{ color: cat.color, borderColor: `${cat.color}50`, backgroundColor: `${cat.color}18` }}
-                    >
-                      {skills[cat.key]?.length || 0} Tech
-                    </span>
                   </div>
 
                   {/* Skills Items in a 2-Column Responsive Inner Grid */}
@@ -196,13 +190,6 @@ export default function Skills() {
                     </span>
                   </div>
                 </div>
-
-                <span 
-                  className="font-mono font-extrabold px-4 py-1.5 rounded-full border text-xs sm:text-sm self-start sm:self-auto shadow-md"
-                  style={{ color: '#00f2ff', borderColor: '#00f2ff60', backgroundColor: '#00f2ff18' }}
-                >
-                  6 Core Strengths
-                </span>
               </div>
 
               {/* 6 Interactive Qualities in 3-Column Balanced Grid with Bright Text */}

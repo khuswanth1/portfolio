@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, forwardRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   CalendarToday, 
@@ -12,11 +12,12 @@ import { portfolioData } from '../data'
 
 const { experience } = portfolioData
 
-function ExperienceCard({ item, onViewAchievements }) {
+const ExperienceCard = forwardRef(function ExperienceCard({ item, onViewAchievements }, ref) {
   const NodeIcon = item.type === 'Professional' ? BusinessCenter : Stars
 
   return (
     <motion.div
+      ref={ref}
       layout
       initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -27,7 +28,7 @@ function ExperienceCard({ item, onViewAchievements }) {
         borderColor: `${item.color}40`,
         boxShadow: `0 20px 40px -20px ${item.color}25`
       }}
-      className="glass-card p-6 sm:p-8 rounded-3xl border border-white/10 ring-1 ring-white/5 transition-all duration-500 group relative overflow-hidden backdrop-blur-xl bg-white/[0.015] flex flex-col justify-between shadow-xl"
+      className="glass-card p-5 sm:p-6 lg:p-7 rounded-3xl border border-white/10 ring-1 ring-white/5 transition-all duration-500 group relative overflow-hidden backdrop-blur-xl bg-white/[0.015] flex flex-col justify-between shadow-xl h-full"
     >
       {/* Top Accent Gradient Bar */}
       <div 
@@ -123,7 +124,7 @@ function ExperienceCard({ item, onViewAchievements }) {
       )}
     </motion.div>
   )
-}
+})
 
 export default function Experience() {
   const [activeFilter, setActiveFilter] = useState('All')
@@ -166,11 +167,11 @@ export default function Experience() {
           ))}
         </div>
 
-        {/* Experience Cards (2-Column Grid Layout) */}
+        {/* Experience Cards (3-Column Grid Layout) */}
         <div className="mb-16 sm:mb-20">
           <motion.div 
             layout
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7"
           >
             <AnimatePresence mode="popLayout">
               {filteredExperience.map((item) => (
