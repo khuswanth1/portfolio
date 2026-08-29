@@ -255,7 +255,6 @@ export const portfolioData = {
       year: "Jul 2026",
       color: "#00f2ff",
       category: "Frontend",
-      credentialId: "HR-FE-2026"
     },
     {
       id: 2,
@@ -264,7 +263,6 @@ export const portfolioData = {
       year: "Jul 2026",
       color: "#00ff88",
       category: "Frontend",
-      credentialId: "HR-REACT-2026"
     },
     {
       id: 3,
@@ -272,8 +270,7 @@ export const portfolioData = {
       issuer: "HackerRank",
       year: "Jul 2026",
       color: "#ffe600",
-      category: "Engineering",
-      credentialId: "HR-SWE-2026"
+      category: "Engineering"
     },
     {
       id: 4,
@@ -281,8 +278,7 @@ export const portfolioData = {
       issuer: "Infosys Springboard",
       year: "Jul 2026",
       color: "#ff00f7",
-      category: "Frontend",
-      credentialId: "INF-JS-2026"
+      category: "Frontend"
     },
     {
       id: 5,
@@ -290,8 +286,7 @@ export const portfolioData = {
       issuer: "NPTEL (IIT Kharagpur)",
       year: "2023",
       color: "#00d4ff",
-      category: "Cloud",
-      credentialId: "NPTEL23CS105"
+      category: "Cloud"
     },
     {
       id: 6,
@@ -299,8 +294,7 @@ export const portfolioData = {
       issuer: "Coursera & Kaggle",
       year: "2023",
       color: "#a855f7",
-      category: "AI/ML",
-      credentialId: "COURSERA-ML-2023"
+      category: "AI/ML"
     },
     {
       id: 7,
@@ -308,8 +302,7 @@ export const portfolioData = {
       issuer: "NPTEL (IIT Madras)",
       year: "2023",
       color: "#ff6b35",
-      category: "Database",
-      credentialId: "NPTEL23CS78"
+      category: "Database"
     },
     {
       id: 8,
@@ -317,8 +310,7 @@ export const portfolioData = {
       issuer: "SoloLearn",
       year: "2022",
       color: "#ffd700",
-      category: "Database",
-      credentialId: "SL-SQL-9821"
+      category: "Database"
     },
     {
       id: 9,
@@ -326,8 +318,7 @@ export const portfolioData = {
       issuer: "Lets Grow More",
       year: "2022",
       color: "#00ff88",
-      category: "Web",
-      credentialId: "LGM-WEB-2022"
+      category: "Web"
     },
     {
       id: 10,
@@ -335,8 +326,7 @@ export const portfolioData = {
       issuer: "Oasis Infobyte",
       year: "2022",
       color: "#7b2fff",
-      category: "Programming",
-      credentialId: "OI-JAVA-2022"
+      category: "Programming"
     }
   ],
 

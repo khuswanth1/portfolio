@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, forwardRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   GitHub, 
@@ -20,7 +20,7 @@ import { portfolioData } from '../data'
 
 const { projects } = portfolioData
 
-function ProjectCard({ project, onViewDetails }) {
+const ProjectCard = forwardRef(function ProjectCard({ project, onViewDetails }, ref) {
   const accentColor = project.color || '#00f2ff'
 
   const getProjectIcon = (id) => {
@@ -35,6 +35,7 @@ function ProjectCard({ project, onViewDetails }) {
 
   return (
     <motion.div
+      ref={ref}
       layout
       initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -45,7 +46,7 @@ function ProjectCard({ project, onViewDetails }) {
         borderColor: `${accentColor}40`,
         boxShadow: `0 20px 40px -20px ${accentColor}25`
       }}
-      className="glass-card p-6 sm:p-8 rounded-3xl border border-white/10 ring-1 ring-white/5 transition-all duration-500 group relative overflow-hidden backdrop-blur-xl bg-white/[0.015] flex flex-col justify-between shadow-2xl"
+      className="glass-card p-5 sm:p-6 lg:p-7 rounded-3xl border border-white/10 ring-1 ring-white/5 transition-all duration-500 group relative overflow-hidden backdrop-blur-xl bg-white/[0.015] flex flex-col justify-between shadow-2xl h-full"
     >
       {/* Top Accent Gradient Line */}
       <div
@@ -102,7 +103,7 @@ function ProjectCard({ project, onViewDetails }) {
           </div>
 
           <div className="min-w-0 flex-1">
-            <h3 className="font-heading font-black text-xl sm:text-2xl text-white tracking-wide leading-snug group-hover:text-white/95 transition-colors">
+            <h3 className="font-heading font-black text-lg sm:text-xl text-white tracking-wide leading-snug group-hover:text-white/95 transition-colors">
               {project.title}
             </h3>
             <span className="text-white/75 font-mono text-xs sm:text-[13px] font-medium block mt-1">
@@ -137,7 +138,7 @@ function ProjectCard({ project, onViewDetails }) {
           style={{ '--hover-color': accentColor }}
         >
           <Code className="text-white/40" fontSize="small" />
-          <span>View Architecture & Features</span>
+          <span>View</span>
           <OpenInNew fontSize="small" className="scale-75 opacity-70 ml-0.5" />
         </button>
 
@@ -153,7 +154,7 @@ function ProjectCard({ project, onViewDetails }) {
       </div>
     </motion.div>
   )
-}
+})
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null)
@@ -198,10 +199,10 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Projects 2-Column Responsive Grid */}
+        {/* Projects 3-Column Responsive Grid */}
         <motion.div 
           layout
-          className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-16 sm:mb-20"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 mb-16 sm:mb-20"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (

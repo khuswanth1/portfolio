@@ -80,7 +80,7 @@ export default function Certifications() {
         {/* Certifications 3-Column Responsive Grid */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 mb-16 md:mb-24"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 mb-4 md:mb-8"
         >
           <AnimatePresence mode="popLayout">
             {filtered.map((cert) => (
@@ -155,17 +155,6 @@ export default function Certifications() {
                       </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Footer Credential ID */}
-                <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-                  <span className="text-white/40 text-[11px]">Credential ID</span>
-                  <span 
-                    className="font-bold font-mono text-[11px] px-2.5 py-0.5 rounded-md border"
-                    style={{ color: cert.color, borderColor: `${cert.color}30`, backgroundColor: `${cert.color}0a` }}
-                  >
-                    {cert.credentialId || "VERIFIED"}
-                  </span>
                 </div>
               </motion.div>
             ))}

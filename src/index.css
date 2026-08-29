@@ -38,6 +38,21 @@
     border-radius: 3px;
   }
 
+  .custom-modal-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .custom-modal-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+  }
+
+  .custom-modal-scrollbar::-webkit-scrollbar-thumb {
+    background: #00f2ff;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+  }
+
   ::selection {
     background: rgba(0, 212, 255, 0.3);
     color: #00d4ff;
