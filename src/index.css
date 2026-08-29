@@ -11,6 +11,9 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   body {
@@ -18,6 +21,8 @@
     color: #e2e8f0;
     font-family: 'DM Sans', sans-serif;
     overflow-x: hidden;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   ::-webkit-scrollbar {
