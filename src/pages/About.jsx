@@ -8,13 +8,9 @@ import {
   LinkedIn,
   School,
   AutoStories,
-  AccountBalance,
-  Lightbulb,
-  CloudQueue,
-  TrackChanges,
-  Handshake
+  AccountBalance
 } from '@mui/icons-material'
-import profiles from '../assets/KhuswanthRao.jpeg'
+import profiles from '../assets/Khuswanth.png'
 import PageWrapper from '../components/PageWrapper'
 import SectionHeader from '../components/SectionHeader'
 import { portfolioData } from '../data'
@@ -54,93 +50,74 @@ export default function About() {
           subtitle="A passionate developer from Tirupati building the future, one commit at a time."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 mb-20">
-          {/* Profile Picture Frame */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 xl:gap-24 items-center mb-20 md:mb-24">
+          {/* Left: Biography Information with Enhanced Typography */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-2 flex items-center justify-center p-4"
-          >
-            <div
-              className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-[2.5rem] overflow-hidden border border-white/5 glass-card group bg-[#08090c]"
-              style={{ boxShadow: '0 20px 50px -20px rgba(0,212,255,0.2)' }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-60 z-10 pointer-events-none" />
-              <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none mix-blend-overlay" />
-
-              <img
-                src={profiles}
-                alt="Khuswanth Rao Jadav"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-            </div>
-          </motion.div>
-
-          {/* Biography Information */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-3"
+            className="lg:col-span-7"
           >
-            <div className="mb-8 sm:mb-10 block text-center lg:text-left">
-              <h3 className="font-heading font-black text-3xl md:text-4xl lg:text-5xl text-white mb-3 tracking-tight leading-none">
+            {/* Role Badge & Name */}
+            <div className="mb-6 sm:mb-8 text-center lg:text-left">
+              <h3 className="font-heading font-black text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-tight">
                 {personal.name || "Khuswanth Rao Jadav"}
               </h3>
-              <div className="flex items-center justify-center lg:justify-start gap-3 sm:gap-5 flex-wrap sm:flex-nowrap">
-                <div className="h-[2px] w-8 sm:w-12 bg-primary/60 shrink-0" />
-                <span className="text-primary font-mono text-[10px] sm:text-xs md:text-sm font-black tracking-normal uppercase">
-                  Full Stack Java Developer
+              <div className="flex items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-3">
+                <div className="h-[2px] w-8 sm:w-12 bg-primary shrink-0 shadow-[0_0_8px_rgba(0,212,255,0.8)]" />
+                <span className="text-primary font-mono text-xs sm:text-sm md:text-base font-black tracking-normal uppercase">
+                  React.js Developer & UI/UX Designer
                 </span>
               </div>
+  
             </div>
 
-            <p className="text-white/80 font-body leading-relaxed mb-8 md:mb-12 text-sm sm:text-base md:text-[16px] border-l-[3px] border-primary/30 pl-4 sm:pl-6 lg:mr-10 font-light">
-              {personal.objective}
-            </p>
+            {/* Objective Statement Card with Increased Font Size */}
+            <div className="glass-card p-6 sm:p-8 rounded-2xl border border-white/10 bg-white/[0.02] relative overflow-hidden mb-8 border-l-4 border-l-primary shadow-xl">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+              <p className="text-white/90 font-body leading-relaxed text-base sm:text-lg md:text-[18px] font-light relative z-10">
+                {personal.objective}
+              </p>
+            </div>
 
-            {/* Info Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 md:mb-12">
+            {/* Contact Info Items (No Card Background, No Underlines, Vibrant Colors) */}
+            <div className="flex flex-row gap-8 mb-6">
               {[
-                { icon: <LocationOn />, label: 'Location', value: 'Tirupati, AP', color: '#ff6b35' },
-                { icon: <Email />, label: 'Email', value: personal.email, href: `mailto:${personal.email}`, color: '#00d4ff' },
-                { icon: <Phone />, label: 'Phone', value: personal.phone, href: `tel:${personal.phone}`, color: '#7b2fff' },
-                { icon: <GitHub />, label: 'GitHub', value: 'khuswanth1', href: personal.github, color: '#ffd700' }
+                { icon: <Email />, label: 'Email', value: personal.email, href: `mailto:${personal.email}`, color: '#00f2ff' },
+                { icon: <Phone />, label: 'Phone', value: personal.phone, href: `tel:${personal.phone}`, color: '#00ff88' },
               ].map((item) => (
                 <div 
                   key={item.label} 
-                  className="flex items-center gap-4 glass-card p-5 group/info transition-all duration-300 hover:bg-white/[0.02] border border-white/5 hover:border-white/10 relative overflow-hidden rounded-2xl"
+                  className="flex items-center gap-4 group/info transition-all duration-300 py-1"
                 >
-                  {/* Hover glow */}
                   <div 
-                    className="absolute inset-0 opacity-0 group-hover/info:opacity-[0.03] transition-opacity duration-500 pointer-events-none" 
-                    style={{ background: `radial-gradient(circle at 10% 20%, ${item.color} 0%, transparent 60%)` }} 
-                  />
-                  <div 
-                    className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/5 text-xl group-hover/info:scale-105 transition-transform duration-300 relative z-10 shrink-0"
-                    style={{ color: item.color, backgroundColor: `${item.color}0a`, borderColor: `${item.color}20` }}
+                    className="w-11 h-11 rounded-2xl flex items-center justify-center text-lg group-hover/info:scale-110 transition-all duration-300 shrink-0 shadow-lg"
+                    style={{ 
+                      color: item.color, 
+                      backgroundColor: `${item.color}15`, 
+                      borderColor: `${item.color}45`,
+                      borderWidth: '1px',
+                      boxShadow: `0 0 15px ${item.color}20`
+                    }}
                   >
                     {item.icon}
                   </div>
-                  <div className="relative z-10 min-w-0 flex-1">
-                    <div className="text-white/40 text-[9px] font-mono font-bold tracking-normal mb-1 uppercase">{item.label}</div>
+                  <div className="min-w-0 flex-1">
                     {item.href ? (
                       <a 
                         href={item.href} 
                         target="_blank" 
                         rel="noreferrer" 
-                        className="block text-white text-xs sm:text-sm font-bold transition-colors duration-300 font-heading tracking-wider truncate group-hover/info:text-[var(--hover-color)]"
-                        style={{ '--hover-color': item.color }}
+                        className="block text-white/90 text-sm sm:text-base font-bold transition-colors duration-300 font-heading tracking-wide truncate no-underline"
+                        onMouseEnter={(e) => { e.currentTarget.style.color = item.color }}
+                        onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255, 255, 255, 0.9)' }}
                       >
                         {item.value}
                       </a>
                     ) : (
                       <div 
-                        className="text-white text-xs sm:text-sm font-bold font-heading tracking-wider truncate transition-colors duration-300 group-hover/info:text-[var(--hover-color)]"
-                        style={{ '--hover-color': item.color }}
+                        className="text-white/90 text-sm sm:text-base font-bold font-heading tracking-wide truncate no-underline"
                       >
                         {item.value}
                       </div>
@@ -156,26 +133,54 @@ export default function About() {
                 href={personal.github}
                 target="_blank"
                 rel="noreferrer"
-                whileHover={{ scale: 1.03, boxShadow: '0 0 20px rgba(0, 212, 255, 0.25)' }}
+                whileHover={{ scale: 1.03, boxShadow: '0 0 25px rgba(0, 212, 255, 0.3)' }}
                 whileTap={{ scale: 0.97 }}
-                className="relative w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-3.5 border border-primary/40 text-primary text-xs font-heading tracking-normal rounded-xl transition-all duration-300 group/btn bg-primary/5 hover:bg-primary hover:text-dark-500 overflow-hidden"
+                className="relative w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-3.5 border border-primary/40 text-primary text-sm font-heading tracking-normal rounded-xl transition-all duration-300 group/btn bg-primary/5 hover:bg-primary hover:text-dark-500 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-[150%] group-hover/btn:translate-x-[150%] transition-transform duration-700 ease-in-out skew-x-12" />
-                <GitHub className="text-[18px] relative z-10" />
+                <GitHub className="text-[20px] relative z-10" />
                 <span className="font-bold tracking-normal relative z-10">GitHub</span>
               </motion.a>
               <motion.a
                 href={personal.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                whileHover={{ scale: 1.03, boxShadow: '0 0 20px rgba(0, 212, 255, 0.25)' }}
+                whileHover={{ scale: 1.03, boxShadow: '0 0 25px rgba(0, 212, 255, 0.3)' }}
                 whileTap={{ scale: 0.97 }}
-                className="relative w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-3.5 border border-[#00d4ff]/40 text-[#00d4ff] text-xs font-heading tracking-normal rounded-xl transition-all duration-300 group/btn bg-[#00d4ff]/5 hover:bg-[#00d4ff] hover:text-dark-500 overflow-hidden"
+                className="relative w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-3.5 border border-[#00d4ff]/40 text-[#00d4ff] text-sm font-heading tracking-normal rounded-xl transition-all duration-300 group/btn bg-[#00d4ff]/5 hover:bg-[#00d4ff] hover:text-dark-500 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-[150%] group-hover/btn:translate-x-[150%] transition-transform duration-700 ease-in-out skew-x-12" />
-                <LinkedIn className="text-[18px] relative z-10" />
+                <LinkedIn className="text-[20px] relative z-10" />
                 <span className="font-bold tracking-normal relative z-10">LinkedIn</span>
               </motion.a>
+            </div>
+          </motion.div>
+
+          {/* Right: Profile Picture Frame */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5 flex items-center justify-center lg:justify-end lg:pl-4"
+          >
+            <div className="relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] lg:max-w-[400px]">
+              {/* Ambient Glow */}
+              <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 via-[#7b2fff]/15 to-transparent blur-3xl rounded-3xl opacity-70 pointer-events-none" />
+
+              <div
+                className="relative rounded-[2.5rem] overflow-hidden border border-white/10 glass-card bg-[#08090c] p-3 shadow-2xl"
+              >
+                <div className="relative rounded-[2rem] overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/60 via-transparent to-transparent opacity-60 pointer-events-none" />
+
+                  <img
+                    src={profiles}
+                    alt={personal.name || "Khuswanth Rao Jadav"}
+                    className="w-full h-auto object-cover block"
+                  />
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -260,83 +265,6 @@ export default function About() {
             </div>
           </div>
         </div>
-
-        {/* At A Glance / Quick Facts */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative mt-20"
-        >
-          <div
-            className="glass-card p-6 sm:p-10 md:p-12 relative overflow-hidden backdrop-blur-3xl rounded-2xl border border-white/5 bg-white/[0.005]"
-            style={{
-              boxShadow: '0 30px 70px -20px rgba(0,0,0,0.6)'
-            }}
-          >
-            {/* Top accent gradient border line */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/80 to-transparent" />
-
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10 relative z-10">
-              <div>
-                <h3 className="font-heading font-black text-2xl sm:text-3xl text-white tracking-normal mb-2 uppercase">
-                  At A Glance
-                </h3>
-                <p className="text-primary/70 font-mono text-[9px] sm:text-[10px] tracking-normal font-black uppercase">Quick Technical & Personal Facts</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 relative z-10">
-              {[
-                { icon: <School />, label: 'Graduated', value: '2024 — B.Tech CSE', color: '#00d4ff' },
-                { icon: <LocationOn />, label: 'Based In', value: 'Tirupati, AP', color: '#7b2fff' },
-                { icon: <Lightbulb />, label: 'Speciality', value: 'Full Stack Java', color: '#ffe600' },
-                { icon: <CloudQueue />, label: 'Learning', value: 'Cloud & DevOps', color: '#00d4ff' },
-                { icon: <TrackChanges />, label: 'Goal', value: 'Enterprise Dev', color: '#ff00f7' },
-                { icon: <Handshake />, label: 'Available', value: 'Open to Offers', color: '#00ff88' }
-              ].map((fact, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ y: -4, borderColor: 'rgba(255, 255, 255, 0.1)' }}
-                  className="relative p-5 pl-7 rounded-xl bg-white/[0.01] hover:bg-white/[0.03] border border-white/5 transition-all duration-300 group/fact overflow-hidden"
-                >
-                  {/* Left Accent indicator bar */}
-                  <div 
-                    className="absolute left-0 top-0 bottom-0 w-[3px] opacity-40 group-hover/fact:opacity-100 transition-opacity duration-300"
-                    style={{ backgroundColor: fact.color }}
-                  />
-
-                  {/* Radial hover glow */}
-                  <div 
-                    className="absolute inset-0 opacity-0 group-hover/fact:opacity-10 transition-opacity duration-500 pointer-events-none"
-                    style={{
-                      background: `radial-gradient(circle at 10% 20%, ${fact.color}33 0%, transparent 65%)`
-                    }}
-                  />
-
-                  <div className="flex items-center gap-4 relative z-10">
-                    <div 
-                      className="w-10 h-10 rounded-lg flex items-center justify-center border border-white/5 text-lg group-hover/fact:scale-105 transition-transform duration-300 shrink-0" 
-                      style={{ color: fact.color, backgroundColor: `${fact.color}0a`, borderColor: `${fact.color}15` }}
-                    >
-                      {fact.icon}
-                    </div>
-
-                    <div className="min-w-0 flex-1">
-                      <span className="block text-white/40 text-[9px] font-mono font-bold tracking-normal mb-0.5 uppercase">{fact.label}</span>
-                      <span 
-                        className="block text-white/90 text-xs sm:text-sm font-heading font-bold tracking-wide truncate transition-colors duration-300 group-hover/fact:text-[var(--hover-color)]"
-                        style={{ '--hover-color': fact.color }}
-                      >
-                        {fact.value}
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
     </PageWrapper>
   )

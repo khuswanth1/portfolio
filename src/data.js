@@ -1,14 +1,14 @@
 export const portfolioData = {
   personal: {
     name: "Khuswanth Rao Jadav",
-    title: "Full Stack Developer",
-    roles: ["Full Stack Java Developer", "Backend Engineer", "Web Developer", "Problem Solver"],
+    title: "React Developer & UI/UX Designer",
+    roles: ["React.js Developer", "Frontend Developer", "UI/UX Designer", "Creative Problem Solver"],
     email: "khuswanthraojadav@gmail.com",
     phone: "+91 7671085912",
     location: "Lakshmi Puram, Tirupati - 517501",
-    linkedin: "https://www.linkedin.com/in/khuswanth-rao-jadav-991686250/",
+    linkedin: "https://www.linkedin.com/in/khuswanth-rao-jadav/",
     github: "https://github.com/khuswanth1",
-    objective: "Results-driven Software Engineer with hands-on experience in full-stack Java development, Spring Boot microservices, and React.js. Skilled in designing scalable REST APIs, optimizing relational database structures, and building high-performance, responsive user interfaces."
+    objective: "Results-driven Frontend & React.js Developer with a strong foundation in UI/UX Design. Experienced in architecting responsive, component-driven web applications, crafting intuitive design systems, and building high-performance user interfaces. Skilled in translating design prototypes into pixel-perfect, accessible, and interactive digital experiences using React, modern JavaScript (ES6+), and contemporary CSS frameworks."
   },
 
   education: [
@@ -52,18 +52,34 @@ export const portfolioData = {
       period: "Jul 2025 – Present",
       type: "Professional",
       color: "#ffe600",
-      description: "Spearheading the engineering of high-performance frontend architectures for enterprise-level applications. Architecting responsive, pixel-perfect user interfaces using React.js and Tailwind CSS, while optimizing component lifecycles for maximum rendering efficiency. Driving the adoption of modern UI/UX standards to deliver seamless, accessible, and high-fidelity digital experiences.",
-      technologies: ["React.js", "Tailwind CSS", "Bootstrap 5", "JavaScript", "HTML5/CSS3", "Responsive Architecture"],
+      description: "Spearheading the engineering of high-performance frontend architectures and cross-platform mobile solutions using React.js and React Native. Architecting responsive, pixel-perfect user interfaces with Tailwind CSS while leveraging AI-assisted development tools (ChatGPT, GitHub Copilot) to accelerate delivery cycles and optimize component workflows.",
+      technologies: ["React.js", "React Native", "Tailwind CSS", "AI Dev Tools (ChatGPT)", "JavaScript", "HTML5/CSS3", "Responsive Architecture"],
       points: [
-        "Optimizing enterprise UI using React.js libraries.",
+        "Engineering responsive web & mobile UI using React.js and React Native.",
+        "Leveraging AI dev tools (ChatGPT / Copilot) to streamline code quality.",
         "Implementing pixel-perfect responsive Tailwind designs.",
-        "Leading modern frontend architecture transitions.",
-        "Enhancing accessible digital user experiences daily."
+        "Leading modern frontend architecture transitions & performance optimization."
       ]
     },
     {
       id: 2,
-      role: "Full Stack Java Developer",
+      role: "Internship",
+      company: "Levitica Technologies Pvt Ltd",
+      period: "Mar 2025 – Jul 2025",
+      type: "Internship",
+      color: "#00ff88",
+      description: "Designed user-centric interfaces and developed responsive frontend components utilizing modern HTML5, CSS3, JavaScript, and UI/UX design workflows. Collaborated with cross-functional teams to build clean wireframes and convert prototypes into interactive, accessible, and pixel-perfect web experiences.",
+      technologies: ["UI/UX Design", "HTML5", "CSS3", "JavaScript", "Responsive Design", "Wireframing", "Figma"],
+      points: [
+        "Designing intuitive UI/UX wireframes and modern interfaces.",
+        "Developing responsive components with HTML5, CSS3 & JavaScript.",
+        "Translating design prototypes into high-performance web pages.",
+        "Optimizing cross-browser responsiveness and user accessibility."
+      ]
+    },
+    {
+      id: 3,
+      role: "Internship",
       company: "Wavemaker",
       period: "Jul 2024 – Sep 2024",
       type: "Internship",
@@ -78,8 +94,8 @@ export const portfolioData = {
       ]
     },
     {
-      id: 3,
-      role: "Web Development Intern",
+      id: 4,
+      role: "Internship",
       company: "Lets Grow More",
       period: "Nov 2022 – Dec 2022",
       type: "Internship",
@@ -94,8 +110,8 @@ export const portfolioData = {
       ]
     },
     {
-      id: 4,
-      role: "Java Development Intern",
+      id: 5,
+      role: "Internship",
       company: "Oasis Infobyte",
       period: "Sep 2022 – Oct 2022",
       type: "Internship",
@@ -112,177 +128,222 @@ export const portfolioData = {
   ],
 
   skills: {
-    languages: [
-      { name: "Java", level: 90, icon: "Coffee" },
-      { name: "Python", level: 75, icon: "Terminal" },
-      { name: "JavaScript", level: 70, icon: "Code" },
-      { name: "SQL", level: 80, icon: "Storage" }
-    ],
     frontend: [
-      { name: "React js", level: 65, icon: "AutoAwesome" },
-      { name: "HTML5", level: 90, icon: "Html" },
-      { name: "CSS3", level: 85, icon: "Css" },
-      { name: "Bootstrap", level: 80, icon: "ViewQuilt" },
-      { name: "JavaScript", level: 70, icon: "Code" }
+      { name: "React.js", icon: "AutoAwesome" },
+      { name: "React Native", icon: "PhoneAndroid" },
+      { name: "JavaScript (ES6+)", icon: "Code" },
+      { name: "HTML5 & CSS3", icon: "Html" },
+      { name: "Tailwind CSS", icon: "Css" },
+      { name: "Bootstrap 5", icon: "ViewQuilt" }
+    ],
+    languages: [
+      { name: "JavaScript", icon: "Code" },
+      { name: "Java", icon: "Coffee" },
+      { name: "Python", icon: "Terminal" },
+      { name: "MYSQL", icon: "Storage" }
     ],
     frameworks: [
-      { name: "Spring Boot", level: 80, icon: "TipsAndUpdates" },
-      { name: "Hibernate", level: 75, icon: "LibraryBooks" },
-      { name: "JDBC", level: 78, icon: "Link" },
-      { name: "Servlets", level: 70, icon: "SettingsInputComponent" },
-      { name: "JSP", level: 68, icon: "Description" }
+      { name: "React Router", icon: "AutoAwesome" },
+      { name: "Spring Boot", icon: "Settings" },
+      { name: "Material UI (MUI)", icon: "ViewQuilt" },
+      { name: "RESTful APIs", icon: "Api" },
+      { name: "Hibernate / JPA", icon: "Storage" }
     ],
     tools: [
-      { name: "MySQL", level: 82, icon: "Storage" },
-      { name: "GitHub", level: 85, icon: "Source" },
-      { name: "REST APIs", level: 80, icon: "Api" },
-      { name: "Agile/Scrum", level: 72, icon: "Loop" }
+      { name: "Git & GitHub", icon: "Source" },
+      { name: "Figma (UI Design)", icon: "Palette" },
+      { name: "VS Code", icon: "Code" },
+      { name: "Postman", icon: "Api" },
+      { name: "MySQL", icon: "Storage" },
+      { name: "Vite / npm", icon: "Build" },
+      { name: "AI Dev Tools (ChatGPT / Claude)", icon: "SmartToy" },
+      { name: "GitHub Copilot", icon: "AutoAwesome" }
     ],
     softSkills: [
-      { name: "Communication", icon: "Chat" },
-      { name: "Problem Solving", icon: "Lightbulb" },
-      { name: "Team Collaboration", icon: "Groups" },
-      { name: "Adaptability", icon: "AutoFixHigh" },
-      { name: "Time Management", icon: "Timer" }
+      { name: "Problem Solving", icon: "Lightbulb", color: "#ffe600", tag: "Analytical Logic" },
+      { name: "UI/UX Thinking", icon: "Palette", color: "#ff00f7", tag: "Design Systems" },
+      { name: "Team Collaboration", icon: "Groups", color: "#00f2ff", tag: "Agile & Cross-Team" },
+      { name: "Adaptability & Learning", icon: "AutoFixHigh", color: "#00ff88", tag: "Fast Ramp-up" },
+      { name: "Clear Communication", icon: "Chat", color: "#00d4ff", tag: "Technical Alignment" },
+      { name: "Attention to Detail", icon: "CheckCircle", color: "#a855f7", tag: "Pixel Perfection" }
     ],
     learning: [
-      { name: "Cloud Architecture", icon: "CloudQueue" },
-      { name: "Microservices", icon: "Dns" },
-      { name: "Docker & K8s", icon: "Layers" },
-      { name: "System Design", icon: "Architecture" }
-    ],
-    spokenLanguages: [
-      { name: "English", level: "Professional", icon: "Translate" },
-      { name: "Telugu", level: "Native", icon: "Translate" },
-      { name: "Hindi", level: "Conversational", icon: "Translate" }
+      { name: "Next.js & Full-Stack React", icon: "AutoAwesome", status: "Active Focus", color: "#00ff88", phase: "01" },
+      { name: "TypeScript Advanced Patterns", icon: "Code", status: "In Progress", color: "#00d4ff", phase: "02" },
+      { name: "Micro-Frontend Architectures", icon: "Layers", status: "Exploring", color: "#ff00f7", phase: "03" },
+      { name: "Cloud & DevOps (AWS/Docker)", icon: "CloudQueue", status: "Expanding", color: "#ffe600", phase: "04" }
     ]
   },
 
   projects: [
     {
       id: 1,
-      title: "ATM Interface",
-      subtitle: "Using Java",
-      description: "A user-friendly console-based ATM interface that emulates the features of a real-time ATM system with advanced functionalities including deposit, withdrawal, and transfer capabilities.",
-      techStack: ["Java", "OOP", "Console UI", "Data Structures"],
+      title: "PharmaCare E-Commerce Platform",
+      subtitle: "React.js • Spring Boot Microservices • JWT • Cloud Architecture",
+      description: "A production-grade full-stack pharmacy e-commerce platform built with React.js and a Spring Boot microservices backend. Features independent authentication, catalog, shopping cart, order, and payment processing services.",
+      techStack: ["React.js", "Spring Boot", "Microservices", "Spring Security", "JWT", "RESTful APIs", "Hibernate", "MySQL", "Tailwind CSS"],
       features: [
-        "Secure PIN-based authentication",
-        "Deposit & Withdrawal operations",
-        "Fund Transfer between accounts",
-        "Balance inquiry & Mini statement",
-        "Transaction history tracking"
+        "Architected scalable microservices backend with isolated Auth, Product, Cart, Order, and Payment services",
+        "Designed and secured RESTful APIs with Spring Boot, Spring Data JPA, Hibernate, and JWT/OAuth2 authentication",
+        "Built dynamic shopping workflows including real-time product search, cart synchronization, and checkout",
+        "Engineered modular React.js components utilizing Context API for seamless global state management",
+        "Implemented enterprise API Gateway routing patterns and robust error-handling mechanisms"
       ],
-      gradient: "from-cyan-500 to-blue-600",
-      github: "https://github.com/khuswanth1/ATM_Interface",
-      category: "Java Application"
-    },
-    {
-      id: 2,
-      title: "Trivia with Seven",
-      subtitle: "Two-Player Quiz Game",
-      description: "A console-based Java application for a two-player trivia game where players can choose from seven unique categories to test their knowledge in a straightforward and enjoyable manner.",
-      techStack: ["Java", "Game Logic", "OOP", "Console UI"],
-      features: [
-        "Two-player competitive mode",
-        "7 distinct knowledge categories",
-        "Real-time scoring system",
-        "Dynamic question shuffling",
-        "Winner announcement system"
-      ],
-      gradient: "from-purple-500 to-pink-600",
-      github: "https://github.com/khuswanth1/triviaWithSeven",
-      category: "Java Application"
-    },
-    {
-      id: 3,
-      title: "pharmacy App",
-      subtitle: "Java, Spring Boot Microservices, React.js",
-      description: "A full-stack pharmacy e-commerce application using React.js and Spring Boot Microservices with independent Auth, Product, Cart, Order, and Payment services.",
-      techStack: ["React.js", "Java", "Spring Boot", "Microservices", "Spring Security", "JWT", "OAuth2", "Spring Data JPA", "Hibernate", "MySQL"],
-      features: [
-        "Developed full-stack microservices architecture with independent Auth, Product, Cart, Order, and Payment services",
-        "Designed RESTful APIs using Spring Boot, Spring Data JPA, Hibernate, and secure authentication with JWT/OAuth2",
-        "Built end-to-end shopping workflows including product search, cart management, checkout, and payment processing",
-        "Created reusable React.js components with Context API-based state management integrated with backend APIs",
-        "Followed enterprise application design practices including API Gateway architecture and layered backend structure"
-      ],
-      gradient: "from-emerald-500 to-teal-600",
+      gradient: "from-emerald-400 to-teal-600",
+      color: "#00ff88",
       github: "https://github.com/khuswanth1/Pharma-app",
       category: "Microservices Web App"
     },
     {
-      id: 4,
-      title: "Ultimate Todo List",
-      subtitle: "React.js, Spring Boot, Spring Data JPA",
-      description: "A full-stack productivity application built using React.js and Spring Boot that allows users to organize and manage daily tasks through a modern responsive interface.",
-      techStack: ["React.js", "Java", "Spring Boot", "REST API", "Spring Data JPA", "Hibernate", "Material UI", "Tailwind CSS", "Docker", "Maven", "Git"],
+      id: 2,
+      title: "TaskMaster - Productivity Suite",
+      subtitle: "React.js • Spring Boot • Material UI • Tailwind CSS • Docker",
+      description: "A full-stack productivity and task management suite engineered with React.js and Spring Boot. Delivers responsive task categorization, priority scheduling, and persistent database storage.",
+      techStack: ["React.js", "Java", "Spring Boot", "REST API", "Spring Data JPA", "Material UI", "Tailwind CSS", "Docker", "Maven"],
       features: [
-        "Developed RESTful backend services with Spring Boot and persistent data storage using Spring Data JPA/Hibernate",
-        "Created reusable React components with clean design styling using Material UI and Tailwind CSS",
-        "Followed enterprise-level architecture separating frontend, backend API, business logic, and database layers",
-        "Added Docker and Docker Compose support for simplified local application setup and deployment"
+        "Developed high-throughput RESTful backend endpoints with Spring Boot and JPA persistence",
+        "Created an intuitive, accessible React frontend with interactive task boards and filter states",
+        "Architected multi-layered application separation across UI, controller API, service, and repository layers",
+        "Configured Docker and Docker Compose environments for simplified containerized deployments"
       ],
-      gradient: "from-amber-500 to-orange-600",
+      gradient: "from-cyan-400 to-blue-600",
+      color: "#00f2ff",
       github: "https://github.com/khuswanth1/Todo",
       category: "Full Stack Web App"
+    },
+    {
+      id: 3,
+      title: "ATM Banking Simulation System",
+      subtitle: "Java Core • Object-Oriented Architecture • Transaction Security",
+      description: "A robust banking simulation system that emulates real-time ATM transactions with secure PIN validation, deposit, withdrawal, account-to-account transfer, and transaction history tracking.",
+      techStack: ["Java", "OOP Design", "Data Structures", "Console UI", "Exception Handling"],
+      features: [
+        "Secure PIN-based authentication with session validation",
+        "Transactional safety for deposit, withdrawal, and fund transfers",
+        "Comprehensive transaction history logging and mini-statement generation",
+        "Robust exception handling and data boundary verification"
+      ],
+      gradient: "from-purple-500 to-pink-600",
+      color: "#ff00f7",
+      github: "https://github.com/khuswanth1/ATM_Interface",
+      category: "Java Application"
+    },
+    {
+      id: 4,
+      title: "Trivia Seven - Interactive Quiz Engine",
+      subtitle: "Java • Multi-Category Engine • Two-Player Competitive Logic",
+      description: "An interactive two-player competitive quiz platform featuring seven knowledge categories, real-time score tracking, dynamic question randomization, and automated winner evaluation.",
+      techStack: ["Java", "Game Logic", "OOP", "Data Collections", "Console UI"],
+      features: [
+        "Two-player competitive game mode with turn management",
+        "7 distinct knowledge domains and curated question banks",
+        "Dynamic question shuffling and real-time score accumulation",
+        "Automated winner evaluation and performance summary"
+      ],
+      gradient: "from-amber-400 to-orange-600",
+      color: "#ffe600",
+      github: "https://github.com/khuswanth1/triviaWithSeven",
+      category: "Java Application"
     }
   ],
 
   certifications: [
     {
       id: 1,
-      title: "Cloud Computing",
-      issuer: "NPTEL",
-      year: "2023",
-      color: "#00d4ff",
-      category: "Cloud"
+      title: "Frontend Developer (React)",
+      issuer: "HackerRank",
+      year: "Jul 2026",
+      color: "#00f2ff",
+      category: "Frontend",
+      credentialId: "HR-FE-2026"
     },
     {
       id: 2,
-      title: "Introduction to Machine Learning",
-      issuer: "Coursera & Kaggle",
-      year: "2023",
-      color: "#7b2fff",
-      category: "AI/ML"
+      title: "React (Basic & Advanced)",
+      issuer: "HackerRank",
+      year: "Jul 2026",
+      color: "#00ff88",
+      category: "Frontend",
+      credentialId: "HR-REACT-2026"
     },
     {
       id: 3,
-      title: "Database Management Systems",
-      issuer: "NPTEL",
-      year: "2023",
-      color: "#ff6b35",
-      category: "Database"
+      title: "Software Engineer Role Certification",
+      issuer: "HackerRank",
+      year: "Jul 2026",
+      color: "#ffe600",
+      category: "Engineering",
+      credentialId: "HR-SWE-2026"
     },
     {
       id: 4,
-      title: "SQL Certification",
-      issuer: "SoloLearn",
-      year: "2022",
-      color: "#ffd700",
-      category: "Database"
+      title: "JavaScript Specialist",
+      issuer: "Infosys Springboard",
+      year: "Jul 2026",
+      color: "#ff00f7",
+      category: "Frontend",
+      credentialId: "INF-JS-2026"
     },
     {
       id: 5,
-      title: "Web Development",
-      issuer: "Lets Grow More",
-      year: "2022",
-      color: "#00ff88",
-      category: "Web"
+      title: "Cloud Computing Architecture",
+      issuer: "NPTEL (IIT Kharagpur)",
+      year: "2023",
+      color: "#00d4ff",
+      category: "Cloud",
+      credentialId: "NPTEL23CS105"
     },
     {
       id: 6,
-      title: "Java Development",
+      title: "Introduction to Machine Learning",
+      issuer: "Coursera & Kaggle",
+      year: "2023",
+      color: "#a855f7",
+      category: "AI/ML",
+      credentialId: "COURSERA-ML-2023"
+    },
+    {
+      id: 7,
+      title: "Database Management Systems (DBMS)",
+      issuer: "NPTEL (IIT Madras)",
+      year: "2023",
+      color: "#ff6b35",
+      category: "Database",
+      credentialId: "NPTEL23CS78"
+    },
+    {
+      id: 8,
+      title: "SQL & Relational Databases",
+      issuer: "SoloLearn",
+      year: "2022",
+      color: "#ffd700",
+      category: "Database",
+      credentialId: "SL-SQL-9821"
+    },
+    {
+      id: 9,
+      title: "Full-Stack Web Development",
+      issuer: "Lets Grow More",
+      year: "2022",
+      color: "#00ff88",
+      category: "Web",
+      credentialId: "LGM-WEB-2022"
+    },
+    {
+      id: 10,
+      title: "Java Application Engineering",
       issuer: "Oasis Infobyte",
       year: "2022",
-      color: "#ff4757",
-      category: "Programming"
+      color: "#7b2fff",
+      category: "Programming",
+      credentialId: "OI-JAVA-2022"
     }
   ],
 
   stats: [
     { label: "Total Projects", value: "10+", icon: "RocketLaunch" },
     { label: "Companies", value: "4", icon: "BusinessCenter" },
-    { label: "Certifications", value: "6", icon: "EmojiEvents" },
+    { label: "Certifications", value: "10", icon: "EmojiEvents" },
     { label: "CGPA", value: "8.31", icon: "Stars" }
   ]
 }

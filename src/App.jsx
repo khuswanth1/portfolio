@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ParticleBackground from './components/ParticleBackground'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import About from './pages/About'
 import Skills from './pages/Skills'
@@ -11,7 +12,6 @@ import Experience from './pages/Experience'
 import Projects from './pages/Projects'
 import Certifications from './pages/Certifications'
 import Contact from './pages/Contact'
-// import CursorGlow from './components/CursorGlow'
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -34,6 +34,7 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="relative min-h-screen bg-dark-500 overflow-hidden">
         <ParticleBackground />
         {/* <CursorGlow /> */}
