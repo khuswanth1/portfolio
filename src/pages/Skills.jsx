@@ -73,20 +73,20 @@ export default function Skills() {
           subtitle="A comprehensive overview of my core technical competencies across modern frontend engineering, React development, and scalable web technologies."
         />
 
-        {/* 1. Primary Technical Competencies Matrix (Spacious 2-Column Cards) */}
+        {/* 1. Primary Technical Competencies Matrix (4-Column Responsive Grid) */}
         <div className="mb-16 md:mb-20">
           <motion.div 
             variants={containerVariants}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 relative z-10"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 relative z-10"
           >
             {categories.map((cat) => (
               <motion.div
                 key={cat.key}
                 variants={itemVariants}
-                className="glass-card rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between transition-all duration-300 hover:border-white/25 hover:bg-white/[0.035] group shadow-2xl"
+                className="glass-card rounded-3xl border border-white/10 bg-white/[0.015] p-5 sm:p-6 relative overflow-hidden flex flex-col justify-between transition-all duration-500 hover:border-white/25 shadow-2xl h-[490px] sm:h-[510px] group"
               >
                 {/* Top accent gradient bar */}
                 <div 
@@ -96,15 +96,15 @@ export default function Skills() {
 
                 {/* Subtle top-right glow */}
                 <div 
-                  className="absolute -top-20 -right-20 w-44 h-44 rounded-full blur-[80px] opacity-20 pointer-events-none group-hover:opacity-35 transition-opacity duration-500"
+                  className="absolute -top-20 -right-20 w-44 h-44 rounded-full blur-[80px] opacity-15 pointer-events-none group-hover:opacity-30 transition-opacity duration-500"
                   style={{ background: cat.color }}
                 />
 
-                <div>
-                  {/* Category Header with bright typography */}
-                  <div className="flex items-center gap-4 mb-6 sm:mb-8 pb-5 border-b border-white/10">
+                {/* Fixed Category Header with Full Typography */}
+                <div className="shrink-0">
+                  <div className="flex items-start gap-3 mb-4 pb-3 border-b border-white/5">
                     <div 
-                      className="w-12 h-12 rounded-xl flex items-center justify-center border text-xl group-hover:scale-105 transition-transform duration-300 shrink-0 shadow-lg"
+                      className="w-10 h-10 rounded-xl flex items-center justify-center border text-lg group-hover:scale-105 transition-transform duration-300 shrink-0 shadow-lg mt-0.5"
                       style={{ 
                         color: cat.color, 
                         backgroundColor: `${cat.color}20`, 
@@ -114,45 +114,34 @@ export default function Skills() {
                       <MuiIcon name={cat.icon} />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h4 className="font-heading font-black text-lg sm:text-xl text-white tracking-wide">
+                      <h5 className="font-heading font-black text-sm sm:text-base text-white tracking-wide leading-snug">
                         {cat.label}
-                      </h4>
-                      <span className="text-white/80 text-xs sm:text-[13px] font-mono font-medium block mt-0.5">
+                      </h5>
+                      <span className="text-white/70 text-[11px] sm:text-xs font-mono font-medium block mt-0.5 leading-tight">
                         {cat.subtitle}
                       </span>
                     </div>
                   </div>
-
-                  {/* Skills Items in a 2-Column Responsive Inner Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    {skills[cat.key]?.map((skill) => (
-                      <div 
-                        key={skill.name}
-                        className="flex items-center gap-3 px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/25 hover:bg-white/[0.07] transition-all duration-300 group/item"
-                      >
-                        <div 
-                          className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 group-hover/item:scale-110"
-                          style={{ color: cat.color, backgroundColor: `${cat.color}18` }}
-                        >
-                          <MuiIcon name={skill.icon} style={{ fontSize: '1.1rem' }} />
-                        </div>
-                        <span className="text-white group-hover/item:text-white font-mono text-xs sm:text-sm font-bold tracking-normal truncate transition-colors duration-300">
-                          {skill.name}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
 
-                {/* Footer status row on smaller mobile */}
-                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono sm:hidden">
-                  <span className="text-white/70 font-semibold">Total Skills</span>
-                  <span 
-                    className="font-bold px-3 py-1 rounded-full border text-xs"
-                    style={{ color: cat.color, borderColor: `${cat.color}40`, backgroundColor: `${cat.color}15` }}
-                  >
-                    {skills[cat.key]?.length || 0} Technologies
-                  </span>
+                {/* Scrollable Skills List Body */}
+                <div className="flex-1 overflow-y-auto pr-1.5 my-2 custom-card-scrollbar space-y-2">
+                  {skills[cat.key]?.map((skill) => (
+                    <div 
+                      key={skill.name}
+                      className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/25 hover:bg-white/[0.07] transition-all duration-300 group/item"
+                    >
+                      <div 
+                        className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 group-hover/item:scale-110"
+                        style={{ color: cat.color, backgroundColor: `${cat.color}18` }}
+                      >
+                        <MuiIcon name={skill.icon} style={{ fontSize: '1rem' }} />
+                      </div>
+                      <span className="text-white group-hover/item:text-white font-mono text-xs font-bold tracking-normal transition-colors duration-300 leading-tight">
+                        {skill.name}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             ))}
@@ -233,7 +222,7 @@ export default function Skills() {
                       >
                         <MuiIcon name={skill.icon} style={{ fontSize: '1.25rem' }} />
                       </div>
-                      <span className="text-white group-hover/item:text-white text-sm sm:text-base font-extrabold tracking-normal truncate">
+                      <span className="text-white group-hover/item:text-white text-sm sm:text-base font-extrabold tracking-normal">
                         {skill.name}
                       </span>
                     </div>
