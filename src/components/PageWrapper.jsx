@@ -20,7 +20,7 @@ export default function PageWrapper({ children, className = '' }) {
       initial="initial"
       animate="animate"
       exit="exit"
-      className={`min-h-screen pt-20 will-change-transform ${className}`}
+      className={`min-h-screen pt-20 ${className}`}
     >
       {children}
     </motion.div>

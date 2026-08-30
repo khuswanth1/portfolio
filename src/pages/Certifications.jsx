@@ -77,26 +77,26 @@ export default function Certifications() {
           ))}
         </div>
 
-        {/* Certifications 3-Column Responsive Grid */}
+        {/* Certifications 4-Column Responsive Grid */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 mb-4 md:mb-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-4 md:mb-8"
         >
           <AnimatePresence mode="popLayout">
             {filtered.map((cert) => (
               <motion.div
                 key={cert.id}
                 layout
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                exit={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.3 }}
                 whileHover={{
                   y: -6,
                   borderColor: `${cert.color}45`,
                   boxShadow: `0 20px 40px -20px ${cert.color}30`
                 }}
-                className="glass-card p-6 sm:p-7 rounded-3xl border border-white/10 ring-1 ring-white/5 transition-all duration-500 group relative overflow-hidden backdrop-blur-xl bg-white/[0.015] flex flex-col justify-between shadow-xl"
+                className="glass-card p-5 sm:p-6 rounded-3xl border border-white/10 ring-1 ring-white/5 transition-all duration-500 group relative overflow-hidden backdrop-blur-xl bg-white/[0.015] flex flex-col justify-between shadow-xl"
               >
                 {/* Top Accent Gradient Line */}
                 <div

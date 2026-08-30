@@ -10,7 +10,6 @@ import {
   LocalPharmacy, 
   TaskAlt, 
   Psychology, 
-  Architecture, 
   VerifiedUser, 
   Layers
 } from '@mui/icons-material'
@@ -20,7 +19,7 @@ import { portfolioData } from '../data'
 
 const { projects } = portfolioData
 
-const ProjectCard = forwardRef(function ProjectCard({ project, onViewDetails }, ref) {
+const ProjectCard = forwardRef(function ProjectCard({ project }, ref) {
   const accentColor = project.color || '#00f2ff'
 
   const getProjectIcon = (id) => {
@@ -37,16 +36,16 @@ const ProjectCard = forwardRef(function ProjectCard({ project, onViewDetails }, 
     <motion.div
       ref={ref}
       layout
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      initial={{ opacity: 0, scale: 0.96 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.96 }}
+      transition={{ duration: 0.35, ease: 'easeOut' }}
       whileHover={{
         y: -6,
         borderColor: `${accentColor}40`,
         boxShadow: `0 20px 40px -20px ${accentColor}25`
       }}
-      className="glass-card p-5 sm:p-6 lg:p-7 rounded-3xl border border-white/10 ring-1 ring-white/5 transition-all duration-500 group relative overflow-hidden backdrop-blur-xl bg-white/[0.015] flex flex-col justify-between shadow-2xl h-full"
+      className="glass-card p-5 sm:p-6 rounded-3xl border border-white/10 ring-1 ring-white/5 transition-all duration-500 group relative overflow-hidden backdrop-blur-xl bg-white/[0.015] flex flex-col justify-between shadow-2xl h-[490px] sm:h-[510px]"
     >
       {/* Top Accent Gradient Line */}
       <div
@@ -59,12 +58,13 @@ const ProjectCard = forwardRef(function ProjectCard({ project, onViewDetails }, 
         style={{ backgroundColor: accentColor }}
       />
 
-      <div>
-        {/* Card Header: Category Pill & GitHub Link */}
-        <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-white/5">
-          <div className="flex items-center gap-3">
+      {/* Fixed Card Header */}
+      <div className="shrink-0">
+        {/* Category Pill & GitHub Direct Link */}
+        <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-white/5">
+          <div className="flex items-center gap-2">
             <span 
-              className="inline-flex items-center gap-1.5 font-mono text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border shadow-sm"
+              className="inline-flex items-center gap-1.5 font-mono text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full border shadow-sm"
               style={{ 
                 color: accentColor, 
                 backgroundColor: `${accentColor}15`, 
@@ -83,17 +83,17 @@ const ProjectCard = forwardRef(function ProjectCard({ project, onViewDetails }, 
             rel="noreferrer"
             whileHover={{ scale: 1.08, backgroundColor: 'rgba(255,255,255,0.08)' }}
             whileTap={{ scale: 0.95 }}
-            className="w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center text-white/50 hover:text-white transition-all duration-300 shrink-0 bg-white/[0.02] shadow-sm"
+            className="w-8 h-8 rounded-xl border border-white/10 flex items-center justify-center text-white/50 hover:text-white transition-all duration-300 shrink-0 bg-white/[0.02] shadow-sm"
             title="View Source on GitHub"
           >
-            <GitHub fontSize="small" />
+            <GitHub className="text-sm" />
           </motion.a>
         </div>
 
         {/* Project Icon & Title */}
-        <div className="flex items-start gap-4 mb-4">
+        <div className="flex items-start gap-3 mb-3">
           <div 
-            className="w-12 h-12 rounded-2xl flex items-center justify-center border text-xl group-hover:scale-105 transition-transform duration-300 shrink-0 shadow-lg mt-0.5"
+            className="w-10 h-10 rounded-2xl flex items-center justify-center border text-lg group-hover:scale-105 transition-transform duration-300 shrink-0 shadow-lg mt-0.5"
             style={{ 
               borderColor: `${accentColor}35`,
               backgroundColor: `${accentColor}15`
@@ -103,53 +103,74 @@ const ProjectCard = forwardRef(function ProjectCard({ project, onViewDetails }, 
           </div>
 
           <div className="min-w-0 flex-1">
-            <h3 className="font-heading font-black text-lg sm:text-xl text-white tracking-wide leading-snug group-hover:text-white/95 transition-colors">
+            <h5 className="font-heading font-black text-sm sm:text-base text-white tracking-wide leading-snug group-hover:text-white/95 transition-colors">
               {project.title}
-            </h3>
-            <span className="text-white/75 font-mono text-xs sm:text-[13px] font-medium block mt-1">
-              {project.subtitle}
-            </span>
+            </h5>
           </div>
-        </div>
-
-        {/* Description */}
-        <p className="text-white/80 font-body text-xs sm:text-sm leading-relaxed mb-6 pl-4 border-l-2" style={{ borderColor: `${accentColor}50` }}>
-          {project.description}
-        </p>
-
-        {/* Tech Stack Chips */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.techStack.map((tech) => (
-            <span
-              key={tech}
-              className="px-2.5 py-1 text-[11px] font-mono font-semibold rounded-lg border border-white/10 text-white/80 bg-white/[0.02] hover:text-white hover:border-white/20 hover:bg-white/[0.05] transition-all duration-300"
-            >
-              {tech}
-            </span>
-          ))}
         </div>
       </div>
 
-      {/* Card Action Buttons */}
-      <div className="border-t border-white/5 pt-5 mt-auto flex items-center gap-3">
-        <button
-          onClick={onViewDetails}
-          className="flex-1 py-3 flex items-center justify-center gap-2 text-xs font-mono font-bold text-white/80 hover:text-white transition-all duration-300 tracking-wider bg-white/[0.03] hover:bg-white/[0.08] rounded-xl border border-white/10 hover:border-white/20 shadow-sm"
-          style={{ '--hover-color': accentColor }}
-        >
-          <Code className="text-white/40" fontSize="small" />
-          <span>View</span>
-          <OpenInNew fontSize="small" className="scale-75 opacity-70 ml-0.5" />
-        </button>
+      {/* Scrollable Middle Content Body with custom scrollbar */}
+      <div className="flex-1 overflow-y-auto pr-1.5 my-2 custom-card-scrollbar space-y-4">
+        {/* Description */}
+        <p className="text-white/80 font-body text-xs leading-relaxed pl-3 border-l-2" style={{ borderColor: `${accentColor}50` }}>
+          {project.description}
+        </p>
 
+        {/* Key Features directly inside card */}
+        {project.features && project.features.length > 0 && (
+          <div>
+            <h4 className="font-heading font-bold text-[10px] uppercase tracking-wider text-white/70 mb-2 flex items-center gap-1.5 sticky top-0 bg-[#040810]/90 backdrop-blur-md py-1 z-10">
+              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: accentColor }} />
+              Key Features
+            </h4>
+            <div className="space-y-1.5">
+              {project.features.map((feature) => (
+                <div
+                  key={feature}
+                  className="flex items-start gap-2 text-[11px] text-white/80 font-body leading-relaxed bg-white/[0.02] border border-white/[0.04] p-2 rounded-xl"
+                >
+                  <Check 
+                    className="flex-shrink-0 mt-0.5 text-xs" 
+                    fontSize="inherit" 
+                    style={{ color: accentColor }} 
+                  />
+                  <span>{feature}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Tech Stack Chips */}
+        <div>
+          <h4 className="font-heading font-bold text-[10px] uppercase tracking-wider text-white/60 mb-1.5">
+            Technologies
+          </h4>
+          <div className="flex flex-wrap gap-1.5">
+            {project.techStack.map((tech) => (
+              <span
+                key={tech}
+                className="px-2 py-0.5 text-[10px] font-mono font-semibold rounded-md border border-white/10 text-white/80 bg-white/[0.02] hover:text-white hover:border-white/20 hover:bg-white/[0.05] transition-all duration-300"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Fixed Card Action Button: Direct Source Repository */}
+      <div className="border-t border-white/5 pt-3.5 mt-auto shrink-0">
         <a
           href={project.github}
           target="_blank"
           rel="noreferrer"
-          className="px-4 py-3 rounded-xl border border-white/10 hover:border-white/25 text-xs font-mono font-bold text-white/70 hover:text-white transition-all bg-white/[0.02] hover:bg-white/[0.06] flex items-center gap-1.5 shadow-sm"
+          className="w-full py-2.5 px-3 rounded-xl border border-white/10 hover:border-white/25 text-xs font-mono font-bold text-white/80 hover:text-white transition-all duration-300 bg-white/[0.03] hover:bg-white/[0.08] flex items-center justify-center gap-2 shadow-sm group/btn"
         >
-          <GitHub fontSize="small" />
-          <span className="hidden sm:inline">Code</span>
+          <GitHub fontSize="small" className="group-hover/btn:scale-110 transition-transform" />
+          <span>View Repository</span>
+          <OpenInNew fontSize="small" className="scale-75 opacity-70 group-hover/btn:opacity-100 transition-opacity" />
         </a>
       </div>
     </motion.div>
@@ -157,7 +178,6 @@ const ProjectCard = forwardRef(function ProjectCard({ project, onViewDetails }, 
 })
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null)
   const [activeFilter, setActiveFilter] = useState('All')
 
   // Filter Categories
@@ -199,17 +219,16 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Projects 3-Column Responsive Grid */}
+        {/* Projects 4-Column Responsive Grid */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 mb-16 sm:mb-20"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-16 sm:mb-20"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
               <ProjectCard 
                 key={project.id} 
                 project={project} 
-                onViewDetails={() => setSelectedProject(project)}
               />
             ))}
           </AnimatePresence>
@@ -283,137 +302,6 @@ export default function Projects() {
           </div>
         </motion.div>
 
-        {/* Modal Popup Overlay */}
-        <AnimatePresence>
-          {selectedProject && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-              {/* Click outside to close */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="absolute inset-0"
-                onClick={() => setSelectedProject(null)}
-              />
-
-              {/* Modal Card Content */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 15 }}
-                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className="relative w-full max-w-xl max-h-[85vh] overflow-y-auto glass-card rounded-3xl border border-white/15 p-6 sm:p-8 z-10 bg-[#08090d]/98 shadow-[0_0_50px_rgba(0,212,255,0.15)] flex flex-col"
-              >
-                {/* Top Accent Gradient Border */}
-                <div
-                  className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${selectedProject.gradient}`}
-                />
-
-                {/* Close Button */}
-                <button
-                  onClick={() => setSelectedProject(null)}
-                  className="absolute top-5 right-5 w-8 h-8 rounded-full border border-white/10 hover:border-white/25 flex items-center justify-center text-white/60 hover:text-white bg-white/5 hover:bg-white/15 transition-all z-20 text-xs"
-                >
-                  ✕
-                </button>
-
-                {/* Header */}
-                <div className="flex items-center gap-4 mb-6 mt-2 pb-5 border-b border-white/10">
-                  <div 
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl border shadow-lg shrink-0"
-                    style={{
-                      borderColor: `${selectedProject.color || '#00f2ff'}40`,
-                      backgroundColor: `${selectedProject.color || '#00f2ff'}15`,
-                      color: selectedProject.color || '#00f2ff'
-                    }}
-                  >
-                    {selectedProject.id === 1 ? <LocalPharmacy fontSize="inherit" /> :
-                     selectedProject.id === 2 ? <TaskAlt fontSize="inherit" /> :
-                     selectedProject.id === 3 ? <AccountBalance fontSize="inherit" /> :
-                     <SportsEsports fontSize="inherit" />}
-                  </div>
-                  <div>
-                    <span 
-                      className="inline-flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border bg-white/5 border-white/10"
-                      style={{ color: selectedProject.color || '#00f2ff' }}
-                    >
-                      {selectedProject.category}
-                    </span>
-                    <h3 className="font-heading font-black text-xl sm:text-2xl text-white mt-1">
-                      {selectedProject.title}
-                    </h3>
-                    <p className="text-white/70 font-mono text-xs tracking-normal mt-0.5">
-                      {selectedProject.subtitle}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Scrollable Details Body */}
-                <div className="space-y-6 overflow-y-auto pr-1">
-                  <div>
-                    <h4 className="font-heading font-bold text-xs uppercase tracking-normal text-white/80 mb-2">Project Architecture & Overview</h4>
-                    <p className="text-white/80 font-body text-xs sm:text-sm leading-relaxed bg-white/[0.02] border border-white/5 p-4 rounded-2xl">
-                      {selectedProject.description}
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4 className="font-heading font-bold text-xs uppercase tracking-normal text-white/80 mb-3">Key Features & Implementations</h4>
-                    <div className="space-y-2.5">
-                      {selectedProject.features.map((feature) => (
-                        <div
-                          key={feature}
-                          className="flex items-start gap-3 text-xs sm:text-[13px] text-white/85 font-body leading-relaxed bg-white/[0.02] border border-white/[0.05] p-3.5 rounded-xl"
-                        >
-                          <Check 
-                            className="flex-shrink-0 mt-0.5" 
-                            fontSize="small" 
-                            style={{ color: selectedProject.color || '#00f2ff' }} 
-                          />
-                          <span>{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-heading font-bold text-xs uppercase tracking-normal text-white/80 mb-3">Technologies Used</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedProject.techStack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1.5 text-xs font-mono font-semibold rounded-lg border border-white/10 text-white/80 bg-white/[0.03]"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Footer Actions */}
-                <div className="mt-8 pt-5 border-t border-white/10 flex justify-end gap-3">
-                  <button
-                    onClick={() => setSelectedProject(null)}
-                    className="px-5 py-2.5 rounded-xl border border-white/15 hover:border-white/30 text-xs font-mono font-bold text-white/60 hover:text-white transition-all bg-white/5 hover:bg-white/10"
-                  >
-                    Close
-                  </button>
-                  <a
-                    href={selectedProject.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="px-5 py-2.5 rounded-xl text-xs font-mono font-bold text-black bg-white hover:bg-white/90 transition-all flex items-center gap-2 shadow-lg"
-                  >
-                    <GitHub fontSize="small" />
-                    <span>View Repository</span>
-                    <OpenInNew fontSize="small" className="scale-75" />
-                  </a>
-                </div>
-              </motion.div>
-            </div>
-          )}
-        </AnimatePresence>
       </div>
     </PageWrapper>
   )

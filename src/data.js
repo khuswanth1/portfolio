@@ -49,36 +49,20 @@ export const portfolioData = {
       id: 1,
       role: "Associate Software Engineer",
       company: "Levitica Technologies Pvt Ltd",
-      period: "Jul 2025 – Present",
+      period: "Mar 2025 – Present",
       type: "Professional",
       color: "#ffe600",
-      description: "Spearheading the engineering of high-performance frontend architectures and cross-platform mobile solutions using React.js and React Native. Architecting responsive, pixel-perfect user interfaces with Tailwind CSS while leveraging AI-assisted development tools (ChatGPT, GitHub Copilot) to accelerate delivery cycles and optimize component workflows.",
-      technologies: ["React.js", "React Native", "Tailwind CSS", "AI Dev Tools (ChatGPT)", "JavaScript", "HTML5/CSS3", "Responsive Architecture"],
+      description: "Spearheading the engineering of high-performance frontend architectures and cross-platform mobile solutions using React.js and React Native. Promoted from Frontend Engineering Intern to Associate Software Engineer, designing pixel-perfect user interfaces with Tailwind CSS, developing responsive components, and leveraging AI dev tools (ChatGPT, GitHub Copilot) to accelerate delivery cycles.",
+      technologies: ["React.js", "React Native", "Tailwind CSS", "JavaScript (ES6+)", "HTML5/CSS3", "UI/UX Design", "Figma", "AI Dev Tools"],
       points: [
-        "Engineering responsive web & mobile UI using React.js and React Native.",
-        "Leveraging AI dev tools (ChatGPT / Copilot) to streamline code quality.",
-        "Implementing pixel-perfect responsive Tailwind designs.",
-        "Leading modern frontend architecture transitions & performance optimization."
+        "Engineering responsive web & mobile UI using React.js, React Native, and Tailwind CSS.",
+        "Designing intuitive UI/UX wireframes, prototypes, and accessible modern interfaces.",
+        "Leveraging AI dev tools (ChatGPT / Copilot) to streamline code quality & accelerate delivery.",
+        "Leading frontend architecture transitions, performance optimization, and cross-browser compatibility."
       ]
     },
     {
       id: 2,
-      role: "Internship",
-      company: "Levitica Technologies Pvt Ltd",
-      period: "Mar 2025 – Jul 2025",
-      type: "Internship",
-      color: "#00ff88",
-      description: "Designed user-centric interfaces and developed responsive frontend components utilizing modern HTML5, CSS3, JavaScript, and UI/UX design workflows. Collaborated with cross-functional teams to build clean wireframes and convert prototypes into interactive, accessible, and pixel-perfect web experiences.",
-      technologies: ["UI/UX Design", "HTML5", "CSS3", "JavaScript", "Responsive Design", "Wireframing", "Figma"],
-      points: [
-        "Designing intuitive UI/UX wireframes and modern interfaces.",
-        "Developing responsive components with HTML5, CSS3 & JavaScript.",
-        "Translating design prototypes into high-performance web pages.",
-        "Optimizing cross-browser responsiveness and user accessibility."
-      ]
-    },
-    {
-      id: 3,
       role: "Internship",
       company: "Wavemaker",
       period: "Jul 2024 – Sep 2024",
@@ -94,7 +78,7 @@ export const portfolioData = {
       ]
     },
     {
-      id: 4,
+      id: 3,
       role: "Internship",
       company: "Lets Grow More",
       period: "Nov 2022 – Dec 2022",
@@ -110,7 +94,7 @@ export const portfolioData = {
       ]
     },
     {
-      id: 5,
+      id: 4,
       role: "Internship",
       company: "Oasis Infobyte",
       period: "Sep 2022 – Oct 2022",
