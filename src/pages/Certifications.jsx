@@ -53,7 +53,7 @@ export default function Certifications() {
 
   return (
     <PageWrapper>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <div className="max-w-7xl 2xl:max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <SectionHeader
           tag="Credentials"
           title="Certifications"
@@ -77,26 +77,26 @@ export default function Certifications() {
           ))}
         </div>
 
-        {/* Certifications 3-Column Responsive Grid */}
+        {/* Certifications 5-Column Responsive Grid */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 mb-4 md:mb-8"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5 mb-4 md:mb-8"
         >
           <AnimatePresence mode="popLayout">
             {filtered.map((cert) => (
               <motion.div
                 key={cert.id}
                 layout
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                exit={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.3 }}
                 whileHover={{
                   y: -6,
                   borderColor: `${cert.color}45`,
                   boxShadow: `0 20px 40px -20px ${cert.color}30`
                 }}
-                className="glass-card p-6 sm:p-7 rounded-3xl border border-white/10 ring-1 ring-white/5 transition-all duration-500 group relative overflow-hidden backdrop-blur-xl bg-white/[0.015] flex flex-col justify-between shadow-xl"
+                className="glass-card p-4 sm:p-5 rounded-2xl border border-white/10 ring-1 ring-white/5 transition-all duration-500 group relative overflow-hidden backdrop-blur-xl bg-white/[0.015] flex flex-col justify-between shadow-xl"
               >
                 {/* Top Accent Gradient Line */}
                 <div
@@ -112,9 +112,9 @@ export default function Certifications() {
 
                 <div>
                   {/* Category Pill & Year Header */}
-                  <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-white/5">
+                  <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-white/5">
                     <span
-                      className="inline-flex items-center gap-1.5 font-mono text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border shadow-sm"
+                      className="inline-flex items-center gap-1 font-mono text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full border shadow-sm"
                       style={{
                         background: `${cert.color}15`,
                         color: cert.color,
@@ -125,16 +125,16 @@ export default function Certifications() {
                       {cert.category}
                     </span>
 
-                    <div className="flex items-center gap-1.5 text-white/80 font-mono text-xs tracking-normal bg-white/[0.03] px-3 py-1 rounded-lg border border-white/5">
-                      <CalendarToday className="text-[12px]" style={{ color: cert.color }} />
+                    <div className="flex items-center gap-1 text-white/80 font-mono text-[10px] sm:text-[11px] tracking-normal bg-white/[0.03] px-2 py-0.5 rounded-md border border-white/5">
+                      <CalendarToday className="text-[11px]" style={{ color: cert.color }} />
                       <span className="font-semibold">{cert.year}</span>
                     </div>
                   </div>
 
                   {/* Icon & Title Header */}
-                  <div className="flex items-start gap-4 mb-4">
+                  <div className="flex items-start gap-3 mb-2">
                     <div
-                      className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl transition-transform duration-300 group-hover:scale-105 shrink-0 shadow-lg mt-0.5"
+                      className="w-10 h-10 rounded-xl flex items-center justify-center text-lg transition-transform duration-300 group-hover:scale-105 shrink-0 shadow-lg mt-0.5"
                       style={{
                         background: `${cert.color}15`,
                         border: `1px solid ${cert.color}35`,
@@ -146,11 +146,11 @@ export default function Certifications() {
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <h3 className="font-heading font-black text-base sm:text-lg text-white tracking-wide leading-snug group-hover:text-white transition-colors">
+                      <h5 className="font-heading font-black text-xs sm:text-sm text-white tracking-wide leading-snug group-hover:text-white transition-colors">
                         {cert.title}
-                      </h3>
-                      <div className="flex items-center gap-1.5 text-white/85 text-xs sm:text-[13px] font-bold font-heading mt-1.5">
-                        <VerifiedUser className="text-xs shrink-0" style={{ color: cert.color }} />
+                      </h5>
+                      <div className="flex items-center gap-1 text-white/85 text-[11px] font-bold font-heading mt-1">
+                        <VerifiedUser className="text-[11px] shrink-0" style={{ color: cert.color }} />
                         <span className="truncate">{cert.issuer}</span>
                       </div>
                     </div>
