@@ -82,7 +82,7 @@ export default function About() {
             </div>
 
             {/* Contact Info Items (No Card Background, No Underlines, Vibrant Colors) */}
-            <div className="flex flex-row gap-8 mb-6">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 mb-6">
               {[
                 { icon: <Email />, label: 'Email', value: personal.email, href: `mailto:${personal.email}`, color: '#00f2ff' },
                 { icon: <Phone />, label: 'Phone', value: personal.phone, href: `tel:${personal.phone}`, color: '#00ff88' },
